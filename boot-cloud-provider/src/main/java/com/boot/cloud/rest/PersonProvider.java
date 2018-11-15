@@ -2,7 +2,10 @@ package com.boot.cloud.rest;
 
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -38,6 +41,10 @@ public class PersonProvider {
                 .filter(p -> Objects.equals(p.getId(), id))
                 .findFirst()
                 .orElseGet(Person::new);
+
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        person.setName(request.getRequestURL().toString());
         return person;
     }
 

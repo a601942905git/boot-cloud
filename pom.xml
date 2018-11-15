@@ -12,8 +12,8 @@
         <module>boot-cloud-provider</module>
         <module>boot-cloud-api</module>
         <module>boot-cloud-eureka-server</module>
-        <module>boot-cloud-consumer</module>
         <module>boot-cloud-app</module>
+        <module>boot-cloud-eureka-cluster-server</module>
     </modules>
 
     <parent>
