@@ -11,6 +11,15 @@ spring:
   application:
     name: spring-cloud-provider-application
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    com.netflix: debug
 ---
 server:
   port: 8081
