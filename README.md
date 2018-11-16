@@ -89,3 +89,6 @@ eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端
 
 # Spring Cloud 注册中心高可用、服务提供者负载
 [Spring Cloud 注册中心高可用、服务提供者负载](http://note.youdao.com/noteshare?id=01918897128ed49c6e4a7f4e95a5ac83)
+
+# Spring Cloud健康监测
+[Spring Cloud  Eureka客户端健康检测与常用配置](http://note.youdao.com/noteshare?id=2b677ba3e96c38f9c566b4eacc73da39)
