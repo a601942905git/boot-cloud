@@ -1,6 +1,12 @@
 # 项目描述
 Spring Boot、Spring Cloud项目，用于学习Spring Cloud分布式技术
 
+# 项目使用版本
+```
+Spring Boot:    2.0.6.RELEASE
+Spring Cloud:   Finchley.SR2
+```
+
 # 项目结构
 ```
 |- boot-cloud
@@ -11,6 +17,10 @@ Spring Boot、Spring Cloud项目，用于学习Spring Cloud分布式技术
             |- boot
                 |- cloud
                     |- rest         基于rest风格的远程调用
+                    |- hystrix      断路器实现
+                        |- HystrixController
+                        |- HystrixService
+                        |- SpringCloudHystrixConsumerAppilcation
                     |- SpringCloudConsumerApplication 服务消费者启动类
                     
     |- boot-cloud-eureka-server         eureka服务
@@ -92,3 +102,5 @@ eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端
 
 # Spring Cloud健康监测
 [Spring Cloud  Eureka客户端健康检测与常用配置](http://note.youdao.com/noteshare?id=2b677ba3e96c38f9c566b4eacc73da39)
+# Spring Cloud Hystrix简单应用
+[Spring Cloud Hystrix简单应用](http://note.youdao.com/noteshare?id=d4285c8eb8cd52e5b83db79118c9e819)
