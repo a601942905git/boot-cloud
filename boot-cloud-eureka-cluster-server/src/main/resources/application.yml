@@ -10,9 +10,11 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka2:8002/eureka,http://eureka3:8003/eureka
+      defaultZone: http://eureka2:8002/eureka,http://eureka3:8003/eureka #eureka服务地址
+    fetch-registry: false # 不从eureka服务中获取服务列表
+    register-with-eureka: false # 不将自己注册到eureka服务中
   instance:
-    hostname: eureka1
+    hostname: eureka1 #示例名称
 
 ---
 spring:
@@ -27,6 +29,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://eureka1:8001/eureka,http://eureka3:8003/eureka
+    fetch-registry: false # 不从eureka服务中获取服务列表
+    register-with-eureka: false # 不将自己注册到eureka服务中
   instance:
     hostname: eureka2
 
@@ -43,5 +47,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://eureka1:8001/eureka,http://eureka2:8002/eureka
+    fetch-registry: false # 不从eureka服务中获取服务列表
+    register-with-eureka: false # 不将自己注册到eureka服务中
   instance:
     hostname: eureka3

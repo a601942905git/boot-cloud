@@ -9,7 +9,9 @@ spring:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka,http://localhost:8003/eureka
-      defaultZone: http://localhost:8000/eureka
+      defaultZone: http://eureka1:8001/eureka,http://eureka2:8002/eureka,http://eureka3:8003/eureka
+      # defaultZone: http://localhost:8000/eureka
+    fetch-registry: true # 从eureka服务中获取服务列表
+    register-with-eureka: false # 不将自己注册到eureka中
   instance:
-    hostname: localhost
+    hostname: spring-cloud-consumer-application

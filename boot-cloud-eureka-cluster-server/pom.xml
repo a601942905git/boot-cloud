@@ -12,7 +12,6 @@
     <artifactId>boot-cloud-eureka-cluster-server</artifactId>
 
     <name>boot-cloud-eureka-cluster-server</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>

@@ -1,6 +1,8 @@
 package com.boot.cloud.rest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.boot.cloud.loadbalance.CustomerRule;
+import com.netflix.loadbalancer.IRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Configuration
 public class PersonConsumer {
 
+    /**
+     * url前缀
+     */
+    public static final String PREFIX_URL = "http://spring-cloud-provider-application/";
+
     private final AtomicInteger atomicInteger = new AtomicInteger(1);
 
     @Bean
@@ -33,12 +40,21 @@ public class PersonConsumer {
         return new RestTemplate();
     }
 
+    /**
+     * 自定义负载策略为随机策略
+     *
+     * @return
+     */
+    @Bean
+    public IRule iRule() {
+        return new CustomerRule();
+    }
+
     @GetMapping("/")
     public String listPerson() {
         RestTemplate restTemplate = getRestTemplate();
 
-        String json = restTemplate.getForObject(
-                "http://spring-cloud-provider-application/persons/", String.class);
+        String json = restTemplate.getForObject(PREFIX_URL + "persons/", String.class);
         return json;
     }
 
@@ -46,8 +62,8 @@ public class PersonConsumer {
     public String getPersonById(@PathVariable Integer id) {
         RestTemplate restTemplate = getRestTemplate();
 
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(
-                "http://spring-cloud-provider-application/persons/id/{1}", String.class, id);
+        ResponseEntity<String> responseEntity =
+                restTemplate.getForEntity(PREFIX_URL + "persons/id/{1}", String.class, id);
 
         System.out.println("responseEntity.getBody()======>" + responseEntity.getBody());
         System.out.println("responseEntity.getStatusCode()======>" + responseEntity.getStatusCode());
@@ -60,8 +76,8 @@ public class PersonConsumer {
     public String getPersonByName(@PathVariable String name) throws UnsupportedEncodingException {
         RestTemplate restTemplate = getRestTemplate();
 
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(
-                "http://spring-cloud-provider-application/persons/name/{name}", String.class, name);
+        ResponseEntity<String> responseEntity =
+                restTemplate.getForEntity(PREFIX_URL + "persons/name/{name}", String.class, name);
 
         System.out.println("responseEntity.getBody()======>" + responseEntity.getBody());
         System.out.println("responseEntity.getStatusCode()======>" + responseEntity.getStatusCode());
@@ -74,7 +90,7 @@ public class PersonConsumer {
     public String getPersonByAge(@PathVariable Integer age) {
         RestTemplate restTemplate = getRestTemplate();
         UriComponents uriComponents = UriComponentsBuilder
-                .fromUriString("http://spring-cloud-provider-application/persons/age?age={age}")
+                .fromUriString(PREFIX_URL + "age?age={age}")
                 .build()
                 .expand(age)
                 .encode();
@@ -93,8 +109,7 @@ public class PersonConsumer {
 
         RestTemplate restTemplate = getRestTemplate();
 
-        String json = restTemplate
-                .postForObject("http://spring-cloud-provider-application/persons/", jsonObject, String.class);
+        String json = restTemplate.postForObject(PREFIX_URL + "persons/", jsonObject, String.class);
 
         return json;
     }
@@ -108,13 +123,13 @@ public class PersonConsumer {
 
         RestTemplate restTemplate = getRestTemplate();
 
-        restTemplate.put("http://spring-cloud-provider-application/persons/", jsonObject);
+        restTemplate.put(PREFIX_URL + "persons/", jsonObject);
     }
 
     @DeleteMapping("/{id}")
     public void modify(@PathVariable("id") Integer id) {
         RestTemplate restTemplate = getRestTemplate();
 
-        restTemplate.delete("http://spring-cloud-provider-application/persons/{id}", id);
+        restTemplate.delete(PREFIX_URL + "persons/{id}", id);
     }
 }

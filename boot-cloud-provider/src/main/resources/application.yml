@@ -2,10 +2,13 @@
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka,http://localhost:8003/eureka
-      defaultZone: http://localhost:8000/eureka
+      defaultZone: http://eureka1:8001/eureka,http://eureka2:8002/eureka,http://eureka:8003/eureka
+      #defaultZone: http://localhost:8000/eureka
+    register-with-eureka: true # 将自己注册到eureka服务中
+    fetch-registry: false # 不从eureka服务中获取服务列表信息
   instance:
-    hostname: localhost
+    hostname: spring-cloud-provider-application
+    prefer-ip-address: true # 展示ip地址
 
 spring:
   application:

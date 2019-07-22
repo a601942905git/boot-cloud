@@ -1,1 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea/
+boot-cloud-app/boot-cloud-app.iml
+boot-cloud-eureka-cluster-server/boot-cloud-eureka-cluster-server.iml
+boot-cloud-eureka-server/boot-cloud-eureka-server.iml
+boot-cloud-provider/boot-cloud-provider.iml
+boot-cloud.iml
