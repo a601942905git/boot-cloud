@@ -1,4 +1,4 @@
-package com.boot.cloud.rest;
+package com.boot.cloud;
 
 import lombok.*;
 

@@ -12,7 +12,6 @@
     <artifactId>boot-cloud-provider</artifactId>
 
     <name>boot-cloud-provider</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
@@ -35,6 +34,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.boot.cloud</groupId>
+            <artifactId>boot-cloud-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
