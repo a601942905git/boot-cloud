@@ -3,6 +3,7 @@ package com.boot.cloud;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * com.boot.cloud.SpringCloudConsumerApplication
@@ -12,9 +13,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class SpringCloudConsumerApplication {
+@EnableFeignClients
+public class SpringCloudFeignConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudConsumerApplication.class, args);
+        SpringApplication.run(SpringCloudFeignConsumerApplication.class, args);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,13 +25,14 @@ public class PersonProvider {
     List<Person> personList = new ArrayList();
 
     @GetMapping("/")
-    public List<Person> listPerson() {
+    public List<Person> listPerson() throws UnknownHostException {
         if (CollectionUtils.isEmpty(personList)) {
-            personList.add(new Person(10001, "测试1", 21));
-            personList.add(new Person(10002, "测试2", 22));
-            personList.add(new Person(10003, "测试3", 23));
-            personList.add(new Person(10004, "测试4", 24));
-            personList.add(new Person(10005, "测试5", 25));
+            String requestUrl = getRequestUrl();
+            personList.add(new Person(10001, requestUrl + "测试1", 21));
+            personList.add(new Person(10002, requestUrl + "测试2", 22));
+            personList.add(new Person(10003, requestUrl + "测试3", 23));
+            personList.add(new Person(10004, requestUrl + "测试4", 24));
+            personList.add(new Person(10005, requestUrl + "测试5", 25));
         }
 
         return personList;
@@ -43,9 +45,7 @@ public class PersonProvider {
                 .findFirst()
                 .orElseGet(Person::new);
 
-        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = servletRequestAttributes.getRequest();
-        person.setName(request.getRequestURL().toString());
+        person.setName(getRequestUrl());
         return person;
     }
 
@@ -94,5 +94,11 @@ public class PersonProvider {
 
         personList.remove(person);
         return personList;
+    }
+
+    private String getRequestUrl() {
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        return request.getRequestURL().toString();
     }
 }

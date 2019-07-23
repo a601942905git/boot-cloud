@@ -1,11 +1,13 @@
 package com.boot.cloud.feign;
 
 import com.boot.cloud.Person;
+import com.boot.cloud.PersonApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 /**
@@ -19,10 +21,10 @@ import java.util.List;
 public class PersonFeignController {
 
     @Autowired
-    private PersonClient personClient;
+    private PersonApi personApi;
 
     @GetMapping("/")
-    public List<Person> listPerson() {
-        return personClient.listPerson();
+    public List<Person> listPerson() throws UnknownHostException {
+        return personApi.listPerson();
     }
 }

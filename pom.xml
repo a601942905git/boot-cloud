@@ -14,6 +14,7 @@
         <module>boot-cloud-app</module>
         <module>boot-cloud-eureka-cluster-server</module>
         <module>boot-cloud-api</module>
+        <module>boot-cloud-feign-app</module>
     </modules>
 
     <parent>

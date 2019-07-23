@@ -34,3 +34,9 @@ server:
 
 spring:
   profiles: provider-server2
+---
+server:
+  port: 8083
+
+spring:
+  profiles: provider-server3

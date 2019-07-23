@@ -1,8 +1,6 @@
 package com.boot.cloud.rest;
 
 import com.alibaba.fastjson.JSONObject;
-import com.boot.cloud.loadbalance.CustomerRule;
-import com.netflix.loadbalancer.IRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,14 +39,14 @@ public class PersonConsumer {
     }
 
     /**
-     * 自定义负载策略为随机策略
+     * 自定义负载策略
      *
      * @return
      */
-    @Bean
-    public IRule iRule() {
-        return new CustomerRule();
-    }
+//    @Bean
+//    public IRule iRule() {
+//        return new CustomerRule();
+//    }
 
     @GetMapping("/")
     public String listPerson() {
