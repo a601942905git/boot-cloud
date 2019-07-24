@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * com.boot.cloud.feign.PersonController
@@ -34,6 +35,15 @@ public class PersonController implements PersonApi {
             personList.add(new Person(100010, requestUrl + "测试10", 25));
         }
         return personList;
+    }
+
+    @Override
+    public Person getPerson(Integer id) {
+        Person person = personList.stream()
+                .filter(p -> Objects.equals(p.getId(), id))
+                .findFirst()
+                .orElseGet(Person::new);
+        return person;
     }
 
     private String getRequestUrl() {

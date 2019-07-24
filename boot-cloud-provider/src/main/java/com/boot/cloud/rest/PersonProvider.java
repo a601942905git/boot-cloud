@@ -44,8 +44,6 @@ public class PersonProvider {
                 .filter(p -> Objects.equals(p.getId(), id))
                 .findFirst()
                 .orElseGet(Person::new);
-
-        person.setName(getRequestUrl());
         return person;
     }
 

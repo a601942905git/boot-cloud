@@ -5,6 +5,7 @@ spring:
   application:
     name: spring-cloud-feign-consumer-application
 
+
 # defaultZone让客户端知道去哪里注册服务
 eureka:
   client:
@@ -15,3 +16,6 @@ eureka:
     register-with-eureka: false # 不将自己注册到eureka中
   instance:
     hostname: spring-cloud-feign-consumer-application
+feign:
+  hystrix:
+    enabled: true

@@ -5,6 +5,7 @@ boot-cloud-eureka-cluster-server/boot-cloud-eureka-cluster-server.iml
 boot-cloud-eureka-server/boot-cloud-eureka-server.iml
 boot-cloud-provider/boot-cloud-provider.iml
 boot-cloud.iml
+boot-cloud-feign-app.iml
 boot-cloud-api/src/test/
 boot-cloud-api/target/
 boot-cloud-app/target/

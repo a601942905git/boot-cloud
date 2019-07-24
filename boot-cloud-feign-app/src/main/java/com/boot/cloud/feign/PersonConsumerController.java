@@ -1,9 +1,9 @@
 package com.boot.cloud.feign;
 
 import com.boot.cloud.Person;
-import com.boot.cloud.PersonApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,13 +18,18 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/feign/consumer/persons")
-public class PersonFeignController {
+public class PersonConsumerController {
 
     @Autowired
-    private PersonApi personApi;
+    private PersonClient personClient;
 
     @GetMapping("/")
     public List<Person> listPerson() throws UnknownHostException {
-        return personApi.listPerson();
+        return personClient.listPerson();
+    }
+
+    @GetMapping("/id/{id}")
+    public Person getPerson(@PathVariable("id") Integer id) {
+        return personClient.getPerson(id);
     }
 }
