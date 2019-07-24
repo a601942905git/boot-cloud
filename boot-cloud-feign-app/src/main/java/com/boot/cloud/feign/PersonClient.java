@@ -8,6 +8,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 /**
  * com.boot.cloud.feign.PersonClient
  *
+ * 针对降级处理，建议使用fallbackFactory，由于使用fallback可能导致RequestMapping映射冲突，需要特殊手段来解决，
+ * fallbackFactory可以获取异常信息
+ *
  * @link {https://github.com/spring-cloud/spring-cloud-netflix/issues/2677}
  * @author lipeng
  * @date 2019-07-24 13:56
