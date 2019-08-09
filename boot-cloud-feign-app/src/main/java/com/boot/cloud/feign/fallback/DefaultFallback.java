@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * com.boot.cloud.fallback.DefaultFallback
+ * 此组件指定如下value的原因：
+ * 指定此value，在查找映射信息的时候会被排除掉
+ * 如果不指定value，那么就会出现重复的requestMapping，因为DefaultFallback和PersonClient都属于PersonApi接口
  *
  * @author lipeng
  * @date 2019-07-23 17:42

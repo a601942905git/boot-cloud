@@ -15,15 +15,7 @@
     <packaging>jar</packaging>
 
     <name>boot-cloud-eureka-server</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <!-- 下面的依赖包含了spring-boot-starter-web -->
