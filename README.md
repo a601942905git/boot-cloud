@@ -3,8 +3,8 @@ Spring Boot、Spring Cloud项目，用于学习Spring Cloud分布式技术
 
 ## 项目使用版本
 ```
-Spring Boot:    2.0.6.RELEASE
-Spring Cloud:   Finchley.SR2
+Spring Boot:    2.1.6.RELEASE
+Spring Cloud:   Greenwich.SR2
 ```
 
 ## 项目模块说明
