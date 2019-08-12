@@ -75,6 +75,11 @@ eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端
 - boot-cloud-nacos-consumer-feign：基于feign和ncos实现的消费端
 - boot-cloud-nacos-consumer-feign-sentinel：基于feign、sentinel和ncos实现的消费端
 
+### 依赖说明
+- spring-cloud-alibaba使用的版本是2.1.0.RELEASE
+- spring-cloud使用的版本是Greenwich.SR2
+- 所有alibaba依赖的groupId必须是com.alibaba.cloud
+
 ### Nacos启动注意事项
 > Nacos单机启动的时候需要加上 -m standalone，否则会出现启动报错，参考地址：[follow the quick start ,there are something error #1127](https://github.com/alibaba/nacos/issues/1127)
 
