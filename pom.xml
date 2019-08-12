@@ -19,6 +19,7 @@
         <module>boot-cloud-nacos-consumer-rest</module>
         <module>boot-cloud-nacos-consumer-feign</module>
         <module>boot-cloud-nacos-consumer-feign-sentinel</module>
+        <module>boot-cloud-nacos-gateway</module>
     </modules>
 
     <parent>

@@ -1,0 +1,15 @@
+server:
+  port: 9070
+spring:
+  application:
+    name: boot-cloud-nacos-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: boot-cloud-nacos-gateway
+        uri: lb://boot-cloud-nacos-consumer-feign-sentinel
+        predicates:
+        - Method=GET,POST
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
