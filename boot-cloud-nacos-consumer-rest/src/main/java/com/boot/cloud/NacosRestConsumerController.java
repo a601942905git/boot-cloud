@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  * @date 2019-08-08 15:02
  */
 @RestController
-public class NacosConsumerController {
+public class NacosRestConsumerController {
 
     @Autowired
     private RestTemplate restTemplate;

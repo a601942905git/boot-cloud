@@ -15,10 +15,10 @@ import org.springframework.web.client.RestTemplate;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class NacosConsumerApplication {
+public class NacosRestConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosConsumerApplication.class, args);
+        SpringApplication.run(NacosRestConsumerApplication.class, args);
     }
 
     @Bean
