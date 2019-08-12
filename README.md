@@ -7,16 +7,13 @@ Spring Boot:    2.1.6.RELEASE
 Spring Cloud:   Greenwich.SR2
 ```
 
-## 项目模块说明
+## 基于Netflix项目模块说明
 - boot-cloud：作为父项目，用来管理依赖
 - boot-cloud-app：基于RestTemplate实现的消费端
 - boot-cloud-eureka-cluster-server：实现eureka集群服务
 - boot-cloud-eureka-server：实现eureka单机服务
 - boot-cloud-feign-app：基于Feign实现的消费端
-- boot-cloud-nacos-consumer-rest：基于rest和ncos实现的消费端
-- boot-cloud-nacos-provider：基于nacos实现的服务提供者
 - boot-cloud-provider：基于nacos实现的提供者
-
 
 ## 关于Eureka服务说明
 boot-cloud-eureka-cluster-server是eureka服务的集群，如果不想启动集群，只想
@@ -71,6 +68,27 @@ public EurekaClientConfigBean() {
 ```
 eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端口是8000，那么http://localhost:8761/eureka/这个
 地址自然是访问不通，所以就会出现连接超时的错误。
+
+## 基于Alibaba项目模块说明
+- boot-cloud-nacos-provider：基于nacos实现的服务提供者
+- boot-cloud-nacos-consumer-rest：基于rest和ncos实现的消费端
+- boot-cloud-nacos-consumer-feign：基于feign和ncos实现的消费端
+- boot-cloud-nacos-consumer-feign-sentinel：基于feign、sentinel和ncos实现的消费端
+
+### Nacos启动注意事项
+> Nacos单机启动的时候需要加上 -m standalone，否则会出现启动报错，参考地址：[follow the quick start ,there are something error #1127](https://github.com/alibaba/nacos/issues/1127)
+
+### 负载均衡测试步骤
+- 基于boot-cloud-nacos-provider模块添加3个启动项
+- 分别启动3个服务提供者
+- 启动boot-cloud-nacos-consumer-feign模块，访问http://localhost:9092/hello?name=nacos
+
+### 降级测试步骤
+- 基于boot-cloud-nacos-provider模块添加3个启动项
+- 分别启动3个服务提供者
+- 启动boot-cloud-nacos-consumer-feign-sentinel模块，访问http://localhost:9093/hello?name=nacos
+- 关闭3个服务提供者
+- 再次访问http://localhost:9093/hello?name=nacos
 
 ## 示例
 - [RestTemplate使用](http://note.youdao.com/noteshare?id=c2c5d2b772684d9bcc25482651b86f0b)
