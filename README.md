@@ -7,7 +7,7 @@ Spring Boot:    2.1.6.RELEASE
 Spring Cloud:   Greenwich.SR2
 ```
 
-## 基于Netflix项目模块说明
+## 一、基于Netflix项目模块说明
 - boot-cloud：作为父项目，用来管理依赖
 - boot-cloud-app：基于RestTemplate实现的消费端
 - boot-cloud-eureka-cluster-server：实现eureka集群服务
@@ -15,11 +15,11 @@ Spring Cloud:   Greenwich.SR2
 - boot-cloud-feign-app：基于Feign实现的消费端
 - boot-cloud-provider：基于nacos实现的提供者
 
-## 关于Eureka服务说明
+### 关于Eureka服务说明
 boot-cloud-eureka-cluster-server是eureka服务的集群，如果不想启动集群，只想
 启动单个eureka服务，那么请使用boot-cloud-eureka-server模块
 
-## 关于boot-cloud-provider
+### 关于boot-cloud-provider
 boot-cloud-provider配置文件中基于文档块实现了多环境配置，可以将项目打好包。
 分别激活profiles: provider-server1、  profiles: provider-server2、  profiles: provider-server3
 就可以部署3个服务提供者，用于测试负载效果
@@ -41,7 +41,7 @@ java -jar xxx.jar --spring.profiles.active=provider-server2
 java -jar xxx.jar --spring.profiles.active=provider-server3
 ```
 
-# Eureka服务配置注意点
+### Eureka服务配置注意点
 示例代码配置如下
 ```
 spring:
@@ -69,7 +69,7 @@ public EurekaClientConfigBean() {
 eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端口是8000，那么http://localhost:8761/eureka/这个
 地址自然是访问不通，所以就会出现连接超时的错误。
 
-## 基于Alibaba项目模块说明
+## 二、基于Alibaba项目模块说明
 - boot-cloud-nacos-provider：基于nacos实现的服务提供者
 - boot-cloud-nacos-consumer-rest：基于rest和ncos实现的消费端
 - boot-cloud-nacos-consumer-feign：基于feign和ncos实现的消费端
