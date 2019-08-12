@@ -95,6 +95,26 @@ eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端
 - 关闭3个服务提供者
 - 再次访问http://localhost:9093/hello?name=nacos
 
+### Sentinel面板
+- 下载sentinel-dashboard，[sentinel-dashboard-1.6.3.jar](https://github.com/alibaba/Sentinel/releases/download/1.6.3/sentinel-dashboard-1.6.3.jar)
+- 启动sentinel-dashboard
+```shell
+java -Dserver.port=8077 -Dcsp.sentinel.dashboard.server=localhost:8077 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.6.3.jar
+```
+- 项目配置与sentinel-dashboard交互
+```yaml
+spring:
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 127.0.0.1:8077
+```
+- 启动boot-cloud-nacos-provider服务提供者
+- 启动boot-cloud-nacos-consumer-feign-sentinel服务消费者
+- 访问http://localhost:9093/hello?name=nacos
+- 观察sentinel-dashboard
+
 ## 示例
 - [RestTemplate使用](http://note.youdao.com/noteshare?id=c2c5d2b772684d9bcc25482651b86f0b)
 - [Spring Cloud 注册中心高可用、服务提供者负载](http://note.youdao.com/noteshare?id=01918897128ed49c6e4a7f4e95a5ac83)
