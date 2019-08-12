@@ -74,6 +74,7 @@ eureka服务默认地址为http://localhost:8761/eureka/，而我们服务的端
 - boot-cloud-nacos-consumer-rest：基于rest和ncos实现的消费端
 - boot-cloud-nacos-consumer-feign：基于feign和ncos实现的消费端
 - boot-cloud-nacos-consumer-feign-sentinel：基于feign、sentinel和ncos实现的消费端
+- boot-cloud-nacos-gateway：通过网关访问服务
 
 ### 依赖说明
 - spring-cloud-alibaba使用的版本是2.1.0.RELEASE
