@@ -61,6 +61,27 @@ public class SentinelExampleTest1 {
     }
 
     /**
+     * 查看控制规则是否生效
+     *
+     * curl http://localhost:8720/getRules\?type\=flow
+     */
+    @Test
+    public void test3() {
+        initFlowRules();
+
+        while (true) {
+            try (Entry entry = SphU.entry(RESOURCE_NAME)) {
+                // 被保护的逻辑
+                System.err.println("HelloWorld");
+            } catch (BlockException e) {
+                // 处理被流控的逻辑
+                System.err.println("blocked!");
+                System.out.println("blocked state：" + BlockException.isBlockException(e));
+            }
+        }
+    }
+
+    /**
      * 初始化流控规则
      */
     private void initFlowRules() {
