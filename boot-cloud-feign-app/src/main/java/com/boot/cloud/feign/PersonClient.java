@@ -20,6 +20,6 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @author lipeng
  * @date 2019-07-24 13:56
  */
-@FeignClient(value = ServiceNameConst.PERSON_SERVICE_NAME, fallback = DefaultFallback.class)
+@FeignClient(value = ServiceNameConst.PERSON_SERVICE_NAME, fallback = DefaultFallback.class, path = "/feign/persons")
 public interface PersonClient extends PersonApi {
 }

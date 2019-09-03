@@ -17,7 +17,7 @@ import java.util.List;
  * @author lipeng
  * @date 2019-07-23 17:42
  */
-@Component(value = "scopedTarget.defaultFallback")
+@Component
 public class DefaultFallback implements PersonClient {
     final Person person = new Person(88888, "大促之间服务暂不可用!!!", 22);
 

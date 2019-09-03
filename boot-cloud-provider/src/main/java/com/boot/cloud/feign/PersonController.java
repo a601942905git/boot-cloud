@@ -3,6 +3,7 @@ package com.boot.cloud.feign;
 import com.boot.cloud.Person;
 import com.boot.cloud.PersonApi;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -20,6 +21,7 @@ import java.util.Objects;
  * @date 2019-07-22 18:03
  */
 @RestController
+@RequestMapping("/feign/persons")
 public class PersonController implements PersonApi {
 
     List<Person> personList = new ArrayList();
