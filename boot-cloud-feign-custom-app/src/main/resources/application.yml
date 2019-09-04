@@ -16,13 +16,23 @@ eureka:
     register-with-eureka: false # 不将自己注册到eureka中
   instance:
     hostname: spring-cloud-feign-custom-consumer-application
+
 feign:
   hystrix:
     enabled: true
   client:
     config:
       spring-cloud-provider-application:
-        loggerLevel: FULL # 一定要将项目的日志修改成debug模式才可以看到请求响应日志输出
+        loggerLevel: FULL # 一定要将项目的日志修改成debug模式才可以看到请求响应日志输出，其他配置参考org.springframework.cloud.openfeign.FeignClientProperties.FeignClientConfiguration
+        connectTimeout: 6000
+        readTimeout: 3000
+#  compression:
+#    request:
+#      enabled: true
+#      mime-types: text/xml,application/xml,application/json,application/json;charset=UTF-8
+#      min-request-size: 1
+#    response:
+#      enabled: true
 logging:
   level:
     com.boot.cloud: debug

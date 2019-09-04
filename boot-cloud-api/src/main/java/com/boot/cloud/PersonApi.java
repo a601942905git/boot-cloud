@@ -2,6 +2,8 @@ package com.boot.cloud;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.net.UnknownHostException;
 import java.util.List;
@@ -29,5 +31,11 @@ public interface PersonApi {
      */
     @GetMapping("/id/{id}")
     Person getPerson(@PathVariable("id") Integer id);
+
+    @PostMapping("/")
+    void savePerson(@RequestBody Person person);
+
+    @PostMapping("/id/")
+    void updatePerson(@RequestBody Person person);
 }
 

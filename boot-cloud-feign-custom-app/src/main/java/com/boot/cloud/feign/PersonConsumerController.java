@@ -2,10 +2,7 @@ package com.boot.cloud.feign;
 
 import com.boot.cloud.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.UnknownHostException;
 import java.util.List;
@@ -31,5 +28,16 @@ public class PersonConsumerController {
     @GetMapping("/id/{id}")
     public Person getPerson(@PathVariable("id") Integer id) {
         return personClient.getPerson(id);
+    }
+
+    @PostMapping("/")
+    public void savePerson(@RequestBody Person person) {
+        personClient.savePerson(person);
+    }
+
+
+    @PostMapping("/id/")
+    public void updatePerson(@RequestBody Person person) {
+        personClient.updatePerson(person);
     }
 }

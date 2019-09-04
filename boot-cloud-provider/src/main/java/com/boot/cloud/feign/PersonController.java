@@ -3,6 +3,7 @@ package com.boot.cloud.feign;
 import com.boot.cloud.Person;
 import com.boot.cloud.PersonApi;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -46,6 +47,16 @@ public class PersonController implements PersonApi {
                 .findFirst()
                 .orElseGet(Person::new);
         return person;
+    }
+
+    @Override
+    public void savePerson(@RequestBody Person person) {
+        personList.add(person);
+    }
+
+    @Override
+    public void updatePerson(@RequestBody Person person) {
+        personList.add(person);
     }
 
     private String getRequestUrl() {
