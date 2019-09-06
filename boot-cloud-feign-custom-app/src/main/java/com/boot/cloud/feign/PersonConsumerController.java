@@ -35,7 +35,6 @@ public class PersonConsumerController {
         personClient.savePerson(person);
     }
 
-
     @PostMapping("/id/")
     public void updatePerson(@RequestBody Person person) {
         personClient.updatePerson(person);

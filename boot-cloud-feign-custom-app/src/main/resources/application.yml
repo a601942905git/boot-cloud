@@ -43,13 +43,13 @@ hystrix:
         enabled: true # 开始熔断器
         errorThresholdPercentage: 50
         requestVolumeThreshold: 5
-        sleepWindowInMilliseconds: 5
+        sleepWindowInMilliseconds: 2
       execution:
         isolation:
           strategy: THREAD # 使用线程隔离策略
           thread:
             interruptOnTimeout: true # 表示是否在执行超时时，中断HystrixCommand.run() 的执行
-            timeoutInMilliseconds: 6000 # 调用者超时时间
+            timeoutInMilliseconds: 6000 # 调用者超时时间，可以在 feign.hystrix.HystrixInvocationHandler.invoke方法中的return HystrixInvocationHandler.this.dispatch.get(method).invoke(args);打上断点进行验证
         timeout:
           enabled: true #是否开启超时设置
       fallback:

@@ -13,6 +13,8 @@ eureka:
 spring:
   application:
     name: spring-cloud-provider-application
+  profiles:
+    active: provider-server1
 
 management:
   endpoints:

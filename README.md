@@ -13,6 +13,7 @@ Spring Cloud:   Greenwich.SR2
 - boot-cloud-eureka-cluster-server：实现eureka集群服务
 - boot-cloud-eureka-server：实现eureka单机服务
 - boot-cloud-feign-app：基于Feign实现的消费端
+- boot-cloud-feign-custom-app：基于Feign实现的消费端，实现对FeignClient的自定义配置
 - boot-cloud-app：基于Feign自定义配置实现的消费端
 - boot-cloud-provider：基于eureka实现的提供者
 
