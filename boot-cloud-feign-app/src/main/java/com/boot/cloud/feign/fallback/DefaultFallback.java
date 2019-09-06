@@ -31,4 +31,13 @@ public class DefaultFallback implements PersonClient {
         return person;
     }
 
+    @Override
+    public void savePerson(Person person) {
+        return;
+    }
+
+    @Override
+    public void updatePerson(Person person) {
+        return;
+    }
 }

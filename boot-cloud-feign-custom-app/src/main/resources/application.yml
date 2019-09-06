@@ -17,22 +17,47 @@ eureka:
   instance:
     hostname: spring-cloud-feign-custom-consumer-application
 
+# feign配置
 feign:
   hystrix:
     enabled: true
   client:
     config:
-      spring-cloud-provider-application:
+      spring-cloud-provider-application: # 此处指定client的名称，这样可以隔离每个client的配置；如果执行default，则所有的client都使用该配置
         loggerLevel: FULL # 一定要将项目的日志修改成debug模式才可以看到请求响应日志输出，其他配置参考org.springframework.cloud.openfeign.FeignClientProperties.FeignClientConfiguration
         connectTimeout: 6000
         readTimeout: 3000
-#  compression:
-#    request:
-#      enabled: true
-#      mime-types: text/xml,application/xml,application/json,application/json;charset=UTF-8
-#      min-request-size: 1
-#    response:
-#      enabled: true
+  okhttp: # 开启okHttp
+    enabled: true
+
+# 日志
 logging:
   level:
     com.boot.cloud: debug
+
+# hystrix，参考地址：https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.requestVolumeThreshold
+hystrix:
+  command: # 参考HystrixCommandProperties
+    default: # 设置HystrixCommandKey，此处为默认
+      circuitBreaker:
+        enabled: true # 开始熔断器
+        errorThresholdPercentage: 50
+        requestVolumeThreshold: 5
+        sleepWindowInMilliseconds: 5
+      execution:
+        isolation:
+          strategy: THREAD # 使用线程隔离策略
+          thread:
+            interruptOnTimeout: true # 表示是否在执行超时时，中断HystrixCommand.run() 的执行
+            timeoutInMilliseconds: 6000 # 调用者超时时间
+        timeout:
+          enabled: true #是否开启超时设置
+      fallback:
+        enabled: true
+  threadpool: # 参考HystrixThreadPoolProperties
+    default:
+      coreSize: 5
+      keepAliveTimeMinutes: 60
+      maxQueueSize: 1024
+      maximumSize: 5
+      queueSizeRejectionThreshold: 128

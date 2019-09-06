@@ -42,6 +42,7 @@
         <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
         <lombok.version>1.18.2</lombok.version>
         <fastjson.version>1.2.51</fastjson.version>
+        <okhttp.version>3.14.2</okhttp.version>
     </properties>
 
     <dependencyManagement>

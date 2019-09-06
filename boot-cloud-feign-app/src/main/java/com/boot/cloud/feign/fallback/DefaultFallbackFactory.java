@@ -32,6 +32,16 @@ public class DefaultFallbackFactory implements FallbackFactory<PersonApi> {
             public Person getPerson(Integer id) {
                 return person;
             }
+
+            @Override
+            public void savePerson(Person person) {
+                return;
+            }
+
+            @Override
+            public void updatePerson(Person person) {
+                return;
+            }
         };
     }
 }
