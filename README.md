@@ -117,9 +117,3 @@ spring:
 - 启动boot-cloud-nacos-consumer-feign-sentinel服务消费者
 - 访问http://localhost:9093/hello?name=nacos
 - 观察sentinel-dashboard
-
-## 示例
-- [RestTemplate使用](http://note.youdao.com/noteshare?id=c2c5d2b772684d9bcc25482651b86f0b)
-- [Spring Cloud 注册中心高可用、服务提供者负载](http://note.youdao.com/noteshare?id=01918897128ed49c6e4a7f4e95a5ac83)
-- [Spring Cloud  Eureka客户端健康检测与常用配置](http://note.youdao.com/noteshare?id=2b677ba3e96c38f9c566b4eacc73da39)
-- [Spring Cloud Hystrix简单应用](http://note.youdao.com/noteshare?id=d4285c8eb8cd52e5b83db79118c9e819)
