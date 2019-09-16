@@ -2,7 +2,7 @@
 Spring Cloud项目，用于学习Spring Cloud分布式技术
 
 ## Spring Cloud组件
-- Eureka：注解中心，用于服务的注册于发现
+- Eureka：注册中心，用于服务的注册于发现
 - Feign：远程调用，用于实现对服务的调用
 - Ribbon：客户端负载均衡，用于客户端对服务调用选择策略
 - Hystrix：熔断器，用于实现熔断、降级、限流的功能
