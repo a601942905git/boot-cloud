@@ -30,11 +30,7 @@ public class PersonController implements PersonApi {
 
     @Override
     public List<Person> listPerson() throws UnknownHostException {
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        isNeedBlock(false);
         System.err.println("======personList======" + personList);
         if (CollectionUtils.isEmpty(personList)) {
             String requestUrl = getRequestUrl();
@@ -45,6 +41,18 @@ public class PersonController implements PersonApi {
             personList.add(new Person(100010, requestUrl + "测试10", 25));
         }
         return personList;
+    }
+
+    private void isNeedBlock(boolean b) {
+        if (!b) {
+            return;
+        }
+        // 用来模拟耗时操作，测试客户端重试机制
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

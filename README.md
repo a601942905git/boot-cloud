@@ -1,5 +1,12 @@
 ## 项目描述
-Spring Boot、Spring Cloud项目，用于学习Spring Cloud分布式技术
+Spring Cloud项目，用于学习Spring Cloud分布式技术
+
+## Spring Cloud组件
+- Eureka：注解中心，用于服务的注册于发现
+- Feign：远程调用，用于实现对服务的调用
+- Ribbon：客户端负载均衡，用于客户端对服务调用选择策略
+- Hystrix：熔断器，用于实现熔断、降级、限流的功能
+- Gateway：网关，用于统一处理请求
 
 ## 项目使用版本
 ```
@@ -9,30 +16,25 @@ Spring Cloud:   Greenwich.SR2
 
 ## 一、基于Netflix项目模块说明
 - boot-cloud：作为父项目，用来管理依赖
+- boot-cloud-eureka-cluster-server：eureka集群服务
+- boot-cloud-eureka-server：eureka单机服务
+- boot-api：服务接口
+- boot-cloud-provider：基于eureka实现的服务提供者
 - boot-cloud-app：基于RestTemplate实现的消费端
-- boot-cloud-eureka-cluster-server：实现eureka集群服务
-- boot-cloud-eureka-server：实现eureka单机服务
 - boot-cloud-feign-app：基于Feign实现的消费端
-- boot-cloud-feign-custom-app：基于Feign实现的消费端，实现对FeignClient的自定义配置
-- boot-cloud-app：基于Feign自定义配置实现的消费端
-- boot-cloud-provider：基于eureka实现的提供者
+- boot-cloud-feign-custom-app：基于Feign实现的消费端，实现对FeignClient的自定义配置，相依配置参考application.yml
 
-### 关于Eureka服务说明
-boot-cloud-eureka-cluster-server是eureka服务的集群，如果不想启动集群，只想
-启动单个eureka服务，那么请使用boot-cloud-eureka-server模块
+### Eureka单机与集群
+- boot-cloud-eureka-server模块实现了eureka单机服务
+- boot-cloud-eureka-cluster-server模块实现了eureka集群服务
 
-### 关于boot-cloud-provider
-boot-cloud-provider配置文件中基于文档块实现了多环境配置，可以将项目打好包。
-分别激活profiles: provider-server1、  profiles: provider-server2、  profiles: provider-server3
-就可以部署3个服务提供者，用于测试负载效果
+### 服务提供者单机与集群
+boot-cloud-provider配置文件中基于文档块实现了多环境配置，可以单机启动，也可以集群启动
 
-
-如果想启动其中1个或者说是分别启动2个
-- IDEA配置
+### 服务提供者集群启动方式
+- IDEA配置，添加3个Spring Boot服务
 ```
-启动类Active Profiles中配置为provider-server1或者provider-server2或者provider-server3，
-不配置按照默认配置启动服务
-
+Program arguments：--spring.profiles.active=provider-server2
 ```
 - jar方式运行
 ```
