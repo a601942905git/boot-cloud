@@ -124,7 +124,7 @@ public class GatewayFallbackController {
 ```
 
 停掉boot-cloud-gateway-feign-app服务，浏览器中输入http://localhost:9071/feign/consumer/persons/，返回结果如下：
-```json
+```
 spring cloud gateway hystrix fallback method execute!!!
 ```
 可以看到网关降级功能已起效
@@ -325,3 +325,37 @@ public class GatewayFallbackController {
 }
 ```
 可以看到我们可以在降级方法方法中获取到异常信息，那么就可以将异常信息记录日志，方便问题排查
+
+### 添加前缀
+在请求的路径中添加前缀，比如我们的请求路径为/consumer/person，指定的前缀为/feign，那么最终的请求路径为/feign/consumer/person
+
+修改yml配置
+```yaml
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: boot-cloud-gateway # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/feign/** # 请求的路径是/feign/**形式
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar # 添加request header，可以在目标方法中通过request.getHeader("")打印输出查看
+            - AddRequestParameter=foo, bar # 添加request parameter，可以在目标方法中通过request.getParameter("")打印输出查看
+            - AddResponseHeader=X-Response-Foo, Bar # 可以在浏览器网络请求的response header中查看
+            - name: Hystrix # 添加Hystrix
+              args:
+                name: fallbackcmd # 指定HystrixCommand commandKey
+                fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统
+            - PreserveHostHeader # 保留原主机host，而不是http设置的
+        - id: boot-cloud-gateway-prefix # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/consumer/** # 请求的路径是/feign/**形式
+          filters:
+            - PrefixPath=/feign # 添加前缀
+```
+在浏览器中输入http://localhost:9071/consumer/persons/，可以看到返回结果，说明前缀配置已生效

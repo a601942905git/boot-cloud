@@ -19,6 +19,13 @@ spring:
               args:
                 name: fallbackcmd # 指定HystrixCommand commandKey
                 fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统
+        - id: boot-cloud-gateway-prefix # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/consumer/** # 请求的路径是/feign/**形式
+          filters:
+            - PrefixPath=/feign # 添加前缀
 
 hystrix:
   command:
