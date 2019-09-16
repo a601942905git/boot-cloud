@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * com.boot.cloud.feign.PersonController
@@ -29,6 +30,12 @@ public class PersonController implements PersonApi {
 
     @Override
     public List<Person> listPerson() throws UnknownHostException {
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.err.println("======personList======" + personList);
         if (CollectionUtils.isEmpty(personList)) {
             String requestUrl = getRequestUrl();
             personList.add(new Person(10006, requestUrl + "测试6", 21));
