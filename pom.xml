@@ -21,6 +21,8 @@
         <module>boot-cloud-nacos-consumer-feign-sentinel</module>
         <module>boot-cloud-nacos-gateway</module>
         <module>boot-cloud-feign-custom-app</module>
+        <module>boot-cloud-gateway</module>
+        <module>boot-cloud-gateway-feign-app</module>
     </modules>
 
     <parent>

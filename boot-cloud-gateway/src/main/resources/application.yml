@@ -1,0 +1,29 @@
+server:
+  port: 9071
+
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: boot-cloud-gateway # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/feign/** # 请求的路径是/feign/**形式
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar # 添加request header，可以在目标方法中通过request.getHeader("")打印输出查看
+            - AddRequestParameter=foo, bar # 添加request parameter，可以在目标方法中通过request.getParameter("")打印输出查看
+            - AddResponseHeader=X-Response-Foo, Bar # 可以在浏览器网络请求的response header中查看
+            - name: Hystrix # 添加Hystrix
+              args:
+                name: fallbackcmd # 指定HystrixCommand commandKey
+                fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统
+
+hystrix:
+  command:
+    fallbackcmd: # HystrixCommand commandKey
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
