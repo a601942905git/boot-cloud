@@ -18,7 +18,12 @@ spring:
             - name: Hystrix # 添加Hystrix
               args:
                 name: fallbackcmd # 指定HystrixCommand commandKey
-                fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统
+                fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统。测试方法，直接停掉路由的服务
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 # 每秒产生一个令牌，也就是每秒允许一个请求通过
+                redis-rate-limiter.burstCapacity: 5 # 令牌桶的容量，也就是允许通过的最大突发请求
+                key-resolver: "#{@remoteAddressKeyResolver}" # 限流的key
         - id: boot-cloud-gateway-prefix # 路由的id
           uri: http://localhost:8093 # 路由服务uri
           predicates: # 谓词，用于过滤请求，符合条件的才进行路由
@@ -26,6 +31,10 @@ spring:
             - Path=/consumer/** # 请求的路径是/feign/**形式
           filters:
             - PrefixPath=/feign # 添加前缀
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
 
 hystrix:
   command:
