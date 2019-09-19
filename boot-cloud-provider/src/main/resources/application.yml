@@ -32,13 +32,11 @@ spring:
   profiles: provider-server1
 ---
 server:
-     port: 8082
-
+  port: 8082
 spring:
   profiles: provider-server2
 ---
 server:
   port: 8083
-
 spring:
   profiles: provider-server3

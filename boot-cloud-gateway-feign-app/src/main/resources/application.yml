@@ -3,7 +3,9 @@ server:
 
 spring:
   application:
-    name: spring-cloud-feign-custom-consumer-application
+    name: spring-cloud-gateway-feign-custom-consumer-application
+  profiles:
+    active: gateway-consumer1
 
 # defaultZone让客户端知道去哪里注册服务
 eureka:
@@ -72,3 +74,19 @@ spring-cloud-provider-application:
     # 总的重试次数为：MaxAutoRetries + MaxAutoRetriesNextServer + (MaxAutoRetries * MaxAutoRetriesNextServer)
     # 总的执行次数为：总的重试次数 + 1(首次调用)
     # 如果配置重试，那么hystrix的超时时间 = 总的执行次数 * (feign的connectionTimeout + feign的readTimeout)
+
+---
+server:
+  port: 8093
+spring:
+  profiles: gateway-consumer1
+---
+server:
+  port: 8094
+spring:
+  profiles: gateway-consumer2
+---
+server:
+  port: 8095
+spring:
+  profiles: gateway-consumer3
