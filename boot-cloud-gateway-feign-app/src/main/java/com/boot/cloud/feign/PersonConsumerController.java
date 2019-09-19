@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.UnknownHostException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,5 +42,11 @@ public class PersonConsumerController {
     @PostMapping("/id/")
     public void updatePerson(@RequestBody Person person) {
         personClient.updatePerson(person);
+    }
+
+    @GetMapping("/retry")
+    public String retry() {
+        System.err.println("method retry execute time：" + new Date());
+        throw new RuntimeException("throw exception......");
     }
 }

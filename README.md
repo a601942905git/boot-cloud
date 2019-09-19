@@ -10,7 +10,7 @@ Spring Cloud项目，用于学习Spring Cloud分布式技术
 
 ## 项目使用版本
 - Spring Boot:    2.1.6.RELEASE
-- Spring Cloud:   Greenwich.SR2
+- Spring Cloud:   Greenwich.SR3
 
 ## 一、基于Netflix项目模块说明
 - boot-cloud：作为父项目，用来管理依赖

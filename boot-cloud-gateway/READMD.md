@@ -430,3 +430,145 @@ docker run --name myredis -p 6379:6379 -d redis
 打开浏览器，访问：http://localhost:9071/feign/consumer/persons/
 ![](https://wolf-heart.oss-cn-beijing.aliyuncs.com/20190827/redis-rete-limit.gif)
 如上效果可以看出，如果快速点击访问，那么就会出现429错误，如果缓速点，可以正常访问，说明限流已起效
+
+### 重写路径
+添加重写路径配置
+```yaml
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: boot-cloud-gateway # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/feign/** # 请求的路径是/feign/**形式
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar # 添加request header，可以在目标方法中通过request.getHeader("")打印输出查看
+            - AddRequestParameter=foo, bar # 添加request parameter，可以在目标方法中通过request.getParameter("")打印输出查看
+            - AddResponseHeader=X-Response-Foo, Bar # 可以在浏览器网络请求的response header中查看
+            - name: Hystrix # 添加Hystrix
+              args:
+                name: fallbackcmd # 指定HystrixCommand commandKey
+                fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统。测试方法，直接停掉路由的服务
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 # 每秒产生一个令牌，也就是每秒允许一个请求通过
+                redis-rate-limiter.burstCapacity: 5 # 令牌桶的容量，也就是允许通过的最大突发请求
+                key-resolver: "#{@remoteAddressKeyResolver}" # 限流的key
+            # - RedirectTo=302, http://localhost:9071/gateway/fallback1 # 重定向
+        - id: boot-cloud-gateway-prefix # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/consumer/** # 请求的路径是/consumer/**形式
+          filters:
+            - PrefixPath=/feign # 添加前缀
+        - id: boot-cloud-gateway-rewrite-path # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/gateway/** # 请求的路径是/gateway/**形式
+          filters:
+            - RewritePath=/gateway/(?<segment>.*), /feign/consumer/$\{segment} # 重写路径，测试访问路径：http://localhost:9071/gateway/persons/
+```
+之前都是通过访问：http://localhost:9071/feign/consumer/persons/来获取列表信息，
+此时我们也可以通过http://localhost:9071/gateway/persons/来获取列表信息
+```json
+[{
+	"id": 10006,
+	"name": "http://10.100.178.22:8081/feign/persons/测试6",
+	"age": 21
+}, {
+	"id": 10007,
+	"name": "http://10.100.178.22:8081/feign/persons/测试7",
+	"age": 22
+}, {
+	"id": 10008,
+	"name": "http://10.100.178.22:8081/feign/persons/测试8",
+	"age": 23
+}, {
+	"id": 10009,
+	"name": "http://10.100.178.22:8081/feign/persons/测试9",
+	"age": 24
+}, {
+	"id": 100010,
+	"name": "http://10.100.178.22:8081/feign/persons/测试10",
+	"age": 25
+}]
+```
+如上效果说明重写路径功能已起效
+
+### 重试机制
+使用重试功能之前请确保cloud的版本为：Greenwich.SR3，并且要增大hystrix的超时时间，配置如下：
+```yaml
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: boot-cloud-gateway # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/feign/** # 请求的路径是/feign/**形式
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar # 添加request header，可以在目标方法中通过request.getHeader("")打印输出查看
+            - AddRequestParameter=foo, bar # 添加request parameter，可以在目标方法中通过request.getParameter("")打印输出查看
+            - AddResponseHeader=X-Response-Foo, Bar # 可以在浏览器网络请求的response header中查看
+            - AddResponseHeader=X-Response-password, /42?user=ford&password=omg!what&flag=true # 可以在浏览器网络请求的response header中查看
+            - RewriteResponseHeader=X-Response-password, , password=[^&]+, password=****** # 重写response header，浏览器查看结果：X-Response-password: /42?user=ford&password=******&flag=true
+            - name: Hystrix # 添加Hystrix
+              args:
+                name: fallbackcmd # 指定HystrixCommand commandKey
+                fallbackUri: forward:/gateway/fallback1 # 指定降级的uri，可以指定系统内部的也可以指定外部系统。测试方法，直接停掉路由的服务
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 # 每秒产生一个令牌，也就是每秒允许一个请求通过
+                redis-rate-limiter.burstCapacity: 5 # 令牌桶的容量，也就是允许通过的最大突发请求
+                key-resolver: "#{@remoteAddressKeyResolver}" # 限流的key
+            - name: Retry
+              args:
+                retries: 3 # 配置重试次数
+                statuses: # 配置状态码，参照org.springframework.http.HttpStatus
+                  - BAD_GATEWAY
+                  - NOT_FOUND
+                exception: # 配置异常
+                  - IOException
+                  - TimeoutException
+                series:
+                  - SERVER_ERROR # 配置系列，参照org.springframework.http.HttpStatus.Series
+                backoff: # 计算方式 firstBackoff * (factor^n)，那么第一次重试时间间隔2s，第二次重试时间间隔4s，第三次重试时间间隔8s，如果重试时间间隔超过maxBackoff，那么按照maxBackoff来计算。如果采用重试，必须要调整hystrix的超时时间
+                  firstBackoff: 2000ms # 时间间隔
+                  maxBackoff: 10000ms # 最大时间间隔
+                  factor: 2 # 因子
+                  basedOnPreviousValue: true # 使用backoff属性必须确保cloud的版本为：Greenwich.SR3
+
+hystrix:
+  command:
+    fallbackcmd: # HystrixCommand commandKey
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
+```
+打开浏览器访问：http://localhost:9071/feign/consumer/persons/retry，查看控制台
+```
+method retry execute time：Thu Sep 19 15:04:13 CST 2019
+method retry execute time：Thu Sep 19 15:04:15 CST 2019
+method retry execute time：Thu Sep 19 15:04:19 CST 2019
+method retry execute time：Thu Sep 19 15:04:27 CST 2019
+```
+根据此计算公式firstBackoff * (factor^n)可以得出第一次重试的时间间隔为2s，第二次的重试时间间隔为4s，第三次重试时间间隔为8s。
+
+### 添加公用过滤器
+```yaml
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      default-filters:
+        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+```
+访问http://localhost:9071/consumer/persons/和http://localhost:9071/feign/consumer/persons/地址，可以看到response header中有我们添加的header数据：X-Response-Default-Foo: Default-Bar

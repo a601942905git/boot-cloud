@@ -5,6 +5,8 @@ spring:
   cloud:
     gateway:
       enabled: true
+      default-filters:
+        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
       routes:
         - id: boot-cloud-gateway # 路由的id
           uri: http://localhost:8093 # 路由服务uri
@@ -15,6 +17,8 @@ spring:
             - AddRequestHeader=X-Request-Foo, Bar # 添加request header，可以在目标方法中通过request.getHeader("")打印输出查看
             - AddRequestParameter=foo, bar # 添加request parameter，可以在目标方法中通过request.getParameter("")打印输出查看
             - AddResponseHeader=X-Response-Foo, Bar # 可以在浏览器网络请求的response header中查看
+            - AddResponseHeader=X-Response-password, /42?user=ford&password=omg!what&flag=true # 可以在浏览器网络请求的response header中查看
+            - RewriteResponseHeader=X-Response-password, , password=[^&]+, password=****** # 重写response header，浏览器查看结果：X-Response-password: /42?user=ford&password=******&flag=true
             - name: Hystrix # 添加Hystrix
               args:
                 name: fallbackcmd # 指定HystrixCommand commandKey
@@ -24,13 +28,37 @@ spring:
                 redis-rate-limiter.replenishRate: 1 # 每秒产生一个令牌，也就是每秒允许一个请求通过
                 redis-rate-limiter.burstCapacity: 5 # 令牌桶的容量，也就是允许通过的最大突发请求
                 key-resolver: "#{@remoteAddressKeyResolver}" # 限流的key
+            - name: Retry
+              args:
+                retries: 3 # 配置重试次数
+                statuses: # 配置状态码，参照org.springframework.http.HttpStatus
+                  - BAD_GATEWAY
+                  - NOT_FOUND
+                exception: # 配置异常
+                  - IOException
+                  - TimeoutException
+                series:
+                  - SERVER_ERROR # 配置系列，参照org.springframework.http.HttpStatus.Series
+                backoff: # 计算方式 firstBackoff * (factor^n)，那么第一次重试时间间隔2s，第二次重试时间间隔4s，第三次重试时间间隔8s，如果重试时间间隔超过maxBackoff，那么按照maxBackoff来计算。如果采用重试，必须要调整hystrix的超时时间
+                  firstBackoff: 2000ms # 时间间隔
+                  maxBackoff: 10000ms # 最大时间间隔
+                  factor: 2 # 因子
+                  basedOnPreviousValue: true # 使用backoff属性必须确保cloud的版本为：Greenwich.SR3
+            # - RedirectTo=302, http://localhost:9071/gateway/fallback1 # 重定向
         - id: boot-cloud-gateway-prefix # 路由的id
           uri: http://localhost:8093 # 路由服务uri
           predicates: # 谓词，用于过滤请求，符合条件的才进行路由
             - Method=GET # 请求方法是GET
-            - Path=/consumer/** # 请求的路径是/feign/**形式
+            - Path=/consumer/** # 请求的路径是/consumer/**形式
           filters:
             - PrefixPath=/feign # 添加前缀
+        - id: boot-cloud-gateway-rewrite-path # 路由的id
+          uri: http://localhost:8093 # 路由服务uri
+          predicates: # 谓词，用于过滤请求，符合条件的才进行路由
+            - Method=GET # 请求方法是GET
+            - Path=/gateway/** # 请求的路径是/gateway/**形式
+          filters:
+            - RewritePath=/gateway/(?<segment>.*), /feign/consumer/$\{segment} # 重写路径，测试访问路径：http://localhost:9071/gateway/persons/
   redis:
     host: 127.0.0.1
     port: 6379
@@ -42,4 +70,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 5000
+            timeoutInMilliseconds: 100000
