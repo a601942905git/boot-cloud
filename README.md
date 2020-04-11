@@ -121,3 +121,8 @@ spring:
 - 启动boot-cloud-nacos-consumer-feign-sentinel服务消费者
 - 访问http://localhost:9093/hello?name=nacos
 - 观察sentinel-dashboard
+
+## 三、相关文章
+- [带你入门RPC之反向代理](https://github.com/a601942905git/boot-cloud/tree/master/boot-cloud-proxy)
+- [带你入门RPC之Http调用](https://github.com/a601942905git/boot-cloud/tree/master/boot-cloud-http-call)
+- [带你入门RPC之使用反向代理简化Http调用](https://github.com/a601942905git/boot-cloud/blob/master/boot-cloud-http-call/READMD_HTTP_PROXY.md)
