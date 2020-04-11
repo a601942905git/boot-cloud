@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/feign/persons")
 public class PersonController implements PersonApi {
 
-    List<Person> personList = new ArrayList();
+    List<Person> personList = new ArrayList<>();
 
     @Override
     public List<Person> listPerson() throws UnknownHostException {
@@ -57,11 +57,10 @@ public class PersonController implements PersonApi {
 
     @Override
     public Person getPerson(Integer id) {
-        Person person = personList.stream()
+        return personList.stream()
                 .filter(p -> Objects.equals(p.getId(), id))
                 .findFirst()
                 .orElseGet(Person::new);
-        return person;
     }
 
     @Override
