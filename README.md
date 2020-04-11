@@ -23,6 +23,8 @@ Spring Cloud项目，用于学习Spring Cloud分布式技术
 - boot-cloud-feign-custom-app：基于Feign实现的消费端，实现对FeignClient的自定义配置，相依配置参考application.yml
 - boot-cloud-gateway：基于Spring Cloud Gateway实现的网关
 - boot-cloud-gateway-feign-app：给boot-cloud-gateway网管服务进行路由的服务消费者
+- boot-cloud-proxy：整理反向代理
+- boot-cloud-http：使用http方式实现远程调用、使用反向代理简化http调用方式、仿照Mybatis结合Spring进一步简化远程过程调用
 
 ### Eureka单机与集群
 - boot-cloud-eureka-server模块实现了eureka单机服务
