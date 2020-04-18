@@ -126,3 +126,4 @@ spring:
 - [带你入门RPC之反向代理](https://github.com/a601942905git/boot-cloud/tree/master/boot-cloud-proxy)
 - [带你入门RPC之Http调用](https://github.com/a601942905git/boot-cloud/tree/master/boot-cloud-http-call)
 - [带你入门RPC之使用反向代理简化Http调用](https://github.com/a601942905git/boot-cloud/blob/master/boot-cloud-http-call/READMD_HTTP_PROXY.md)
+- [带你入门RPC值整合Spring](https://github.com/a601942905git/boot-cloud/blob/master/boot-cloud-http-call/README_SPRING.md)
