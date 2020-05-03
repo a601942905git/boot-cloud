@@ -1,5 +1,6 @@
 package com.boot.cloud.spring;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
@@ -24,9 +25,10 @@ public class RpcServiceClassPathScanner extends ClassPathBeanDefinitionScanner {
         super(registry, false);
     }
 
+    @NotNull
     @Override
-    protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
-        addIncludeFilter((metadataReader, metadataReaderFactory) -> true);
+    protected Set<BeanDefinitionHolder> doScan(@NotNull String... basePackages) {
+        addIncludeFilter((metadataReader, metadataReaderFactory) -> metadataReader.getClassMetadata().isInterface());
         Set<BeanDefinitionHolder> beanDefinitions = super.doScan(basePackages);
 
         if (beanDefinitions.isEmpty()) {

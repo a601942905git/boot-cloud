@@ -25,6 +25,7 @@
         <module>boot-cloud-gateway-feign-app</module>
         <module>boot-cloud-proxy</module>
         <module>boot-cloud-http-call</module>
+        <module>boot-cloud-http-call-spring</module>
     </modules>
 
     <parent>

@@ -1,7 +1,7 @@
 package com.boot.cloud.spring.third.service;
 
-import com.boot.cloud.Person;
-import com.boot.cloud.proxy.SavePersonRequest;
+import com.boot.cloud.spring.Person;
+import com.boot.cloud.spring.SavePersonRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 

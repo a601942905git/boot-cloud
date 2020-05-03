@@ -1,7 +1,5 @@
 package com.boot.cloud.spring;
 
-import com.boot.cloud.Person;
-import com.boot.cloud.proxy.SavePersonRequest;
 import com.boot.cloud.spring.third.service.PersonRpcCallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +17,8 @@ import java.util.List;
  * @date 2020/4/5 10:19 AM
  */
 @RestController
-@RequestMapping("/persons2/")
-public class PersonRpcCallController2 {
+@RequestMapping("/spring/persons/")
+public class PersonRpcCallController {
 
     @Autowired
     private PersonRpcCallService personRpcCallService;
