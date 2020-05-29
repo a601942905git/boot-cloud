@@ -22,6 +22,7 @@ import java.util.List;
 @Service
 public class PersonHttpCallServiceImpl implements PersonHttpCallService {
 
+    @Override
     public List<Person> listPerson() {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(RequestUrlConstant.LIST_PERSON_URL).build();
@@ -36,6 +37,7 @@ public class PersonHttpCallServiceImpl implements PersonHttpCallService {
         }
     }
 
+    @Override
     public void savePerson(SavePersonRequest savePersonRequest) {
         OkHttpClient client = new OkHttpClient();
         final MediaType JSON = MediaType.get("application/json; charset=utf-8");

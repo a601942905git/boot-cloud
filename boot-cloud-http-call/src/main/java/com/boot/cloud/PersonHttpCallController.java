@@ -21,7 +21,7 @@ import java.util.List;
 public class PersonHttpCallController {
 
     @Autowired
-    private PersonHttpCallServiceImpl personHttpCallService;
+    private PersonHttpCallService personHttpCallService;
 
     @GetMapping("/")
     public List<Person> listPerson() {
