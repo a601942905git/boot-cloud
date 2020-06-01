@@ -26,6 +26,7 @@
         <module>boot-cloud-proxy</module>
         <module>boot-cloud-http-call</module>
         <module>boot-cloud-http-call-spring</module>
+        <module>boot-cloud-example</module>
     </modules>
 
     <parent>
