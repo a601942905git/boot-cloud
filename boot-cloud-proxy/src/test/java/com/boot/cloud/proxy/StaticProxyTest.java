@@ -1,6 +1,7 @@
 package com.boot.cloud.proxy;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * com.boot.cloud.proxy.HelloServiceTest

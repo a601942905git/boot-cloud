@@ -1,23 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
-boot-cloud-api/boot-cloud-api.iml
-boot-cloud-app/boot-cloud-app.iml
-boot-cloud-eureka-cluster-server/boot-cloud-eureka-cluster-server.iml
-boot-cloud-eureka-server/boot-cloud-eureka-server.iml
-boot-cloud-provider/boot-cloud-provider.iml
-boot-cloud-feign-app/boot-cloud-feign-app.iml
-boot-cloud-nacos-consumer-feign-sentinel/boot-cloud-nacos-consumer-feign-sentinel.iml
-boot-cloud-nacos-consumer-feign/boot-cloud-nacos-consumer-feign.iml
-boot-cloud-nacos-gateway/boot-cloud-nacos-gateway.iml
-boot-cloud-api/src/test/
-boot-cloud-api/target/
-boot-cloud-app/target/
-boot-cloud-eureka-cluster-server/target/
-boot-cloud-eureka-server/target/
-boot-cloud-feign-app/src/test/
-boot-cloud-feign-app/target/
-boot-cloud-provider/target/
-boot-cloud-nacos-consumer-rest/src/test/
-boot-cloud-nacos-consumer-rest/target/
-boot-cloud-nacos-provider/src/test/
-boot-cloud-nacos-provider/target/
+*.iml
+*.class
+*/target/classes/*.yml

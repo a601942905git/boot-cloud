@@ -2,7 +2,7 @@ package com.boot.cloud.feign.fallback;
 
 import com.boot.cloud.Person;
 import com.boot.cloud.PersonApi;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 import java.net.UnknownHostException;

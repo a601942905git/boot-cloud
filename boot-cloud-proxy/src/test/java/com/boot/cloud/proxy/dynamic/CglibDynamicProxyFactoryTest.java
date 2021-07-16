@@ -3,7 +3,7 @@ package com.boot.cloud.proxy.dynamic;
 import com.boot.cloud.proxy.HelloService;
 import com.boot.cloud.proxy.HelloServiceImpl;
 import com.boot.cloud.proxy.UserService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

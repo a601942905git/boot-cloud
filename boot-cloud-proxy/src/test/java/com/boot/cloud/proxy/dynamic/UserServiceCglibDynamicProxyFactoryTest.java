@@ -1,7 +1,7 @@
 package com.boot.cloud.proxy.dynamic;
 
 import com.boot.cloud.proxy.UserService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * com.boot.cloud.proxy.dynamic.HelloServiceCglibDynamicProxyFactoryTest
