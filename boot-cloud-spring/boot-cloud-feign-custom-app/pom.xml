@@ -3,16 +3,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>boot-cloud</artifactId>
+        <artifactId>boot-cloud-spring</artifactId>
         <groupId>com.boot.cloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>boot-cloud-feign-app</artifactId>
-
-    <name>boot-cloud-feign-app</name>
-    <url>http://www.example.com</url>
+    <artifactId>boot-cloud-feign-custom-app</artifactId>
+    <name>boot-cloud-feign-custom-app</name>
 
     <dependencies>
         <!-- 下面的依赖包含了spring-boot-starter-web -->
@@ -35,6 +33,16 @@
             <groupId>com.boot.cloud</groupId>
             <artifactId>boot-cloud-api</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign</groupId>-->
+<!--            <artifactId>feign-okhttp</artifactId>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
         </dependency>
     </dependencies>
 

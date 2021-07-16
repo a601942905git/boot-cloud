@@ -14,23 +14,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>boot-cloud-provider</module>
-        <module>boot-cloud-eureka-server</module>
-        <module>boot-cloud-app</module>
-        <module>boot-cloud-eureka-cluster-server</module>
-        <module>boot-cloud-api</module>
-        <module>boot-cloud-feign-app</module>
-        <module>boot-cloud-nacos-provider</module>
-        <module>boot-cloud-nacos-consumer-rest</module>
-        <module>boot-cloud-nacos-consumer-feign</module>
-        <module>boot-cloud-nacos-consumer-feign-sentinel</module>
-        <module>boot-cloud-nacos-gateway</module>
-        <module>boot-cloud-feign-custom-app</module>
-        <module>boot-cloud-gateway</module>
-        <module>boot-cloud-gateway-feign-app</module>
         <module>boot-cloud-proxy</module>
-        <module>boot-cloud-http-call</module>
-        <module>boot-cloud-http-call-spring</module>
+        <module>boot-cloud-spring</module>
+        <module>boot-cloud-alibaba</module>
     </modules>
 
     <name>boot-cloud</name>
