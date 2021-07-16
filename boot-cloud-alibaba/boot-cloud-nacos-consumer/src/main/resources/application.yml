@@ -1,8 +1,8 @@
 server:
-  port: 9093
+  port: 9090
 spring:
   application:
-    name: boot-cloud-nacos-consumer-feign-sentinel
+    name: boot-cloud-nacos-consumer
   cloud:
     nacos:
       discovery:

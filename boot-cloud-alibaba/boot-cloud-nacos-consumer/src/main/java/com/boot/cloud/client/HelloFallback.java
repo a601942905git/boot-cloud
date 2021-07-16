@@ -1,4 +1,4 @@
-package com.boot.cloud;
+package com.boot.cloud.client;
 
 import org.springframework.stereotype.Component;
 

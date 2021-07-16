@@ -1,18 +1,21 @@
-package com.boot.cloud;
+package com.boot.cloud.controller;
 
+import com.boot.cloud.client.HelloClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * com.boot.cloud.NacosFeignConsumerConntroller
+ * com.boot.cloud.controller.NacosFeignController
  *
  * @author lipeng
- * @date 2019-08-12 10:36
+ * @date 2021/7/16 5:56 PM
  */
 @RestController
-public class NacosFeignConsumerController {
+@RequestMapping("/feign")
+public class NacosFeignController {
 
     @Autowired
     private HelloClient helloClient;
