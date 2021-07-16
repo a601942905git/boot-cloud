@@ -11,14 +11,20 @@ server:
 server:
   port: 9080
 spring:
-  profiles: boot-cloud-nacos-provider1
+  config:
+    activate:
+      on-profile: boot-cloud-nacos-provider1
 ---
 server:
   port: 9081
 spring:
-  profiles: boot-cloud-nacos-provider2
+  config:
+    activate:
+      on-profile: boot-cloud-nacos-provider2
 ---
 server:
   port: 9082
 spring:
-  profiles: boot-cloud-nacos-provider3
+  config:
+    activate:
+      on-profile: boot-cloud-nacos-provider3

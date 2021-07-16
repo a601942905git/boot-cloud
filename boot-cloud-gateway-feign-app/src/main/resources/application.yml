@@ -79,14 +79,20 @@ spring-cloud-provider-application:
 server:
   port: 8093
 spring:
-  profiles: gateway-consumer1
+  config:
+    activate:
+      on-profile: gateway-consumer1
 ---
 server:
   port: 8094
 spring:
-  profiles: gateway-consumer2
+  config:
+    activate:
+      on-profile: gateway-consumer2
 ---
 server:
   port: 8095
 spring:
-  profiles: gateway-consumer3
+  config:
+    activate:
+      on-profile: gateway-consumer3

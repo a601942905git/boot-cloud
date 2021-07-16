@@ -2,7 +2,9 @@
 spring:
   application:
     name: spring-boot-cloud-eureka-server
-  profiles: eureka1
+  config:
+    activate:
+      on-profile: eureka1
 
 server:
   port: 8001
@@ -20,7 +22,9 @@ eureka:
 spring:
   application:
     name: spring-boot-cloud-eureka-server
-  profiles: eureka2
+  config:
+    activate:
+      on-profile: eureka2
 
 server:
   port: 8002
@@ -38,7 +42,9 @@ eureka:
 spring:
   application:
     name: spring-boot-cloud-eureka-server
-  profiles: eureka3
+  config:
+    activate:
+      on-profile: eureka3
 
 server:
   port: 8003

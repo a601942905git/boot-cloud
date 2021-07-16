@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/persons")
-public class PersonProvider {
+public class PersonRestController {
 
     List<Person> personList = new ArrayList();
 

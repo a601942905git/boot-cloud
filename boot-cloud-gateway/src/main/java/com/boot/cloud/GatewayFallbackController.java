@@ -30,7 +30,7 @@ public class GatewayFallbackController {
         ServerHttpRequest request = exchange.getRequest();
         result.put("path", request.getPath().pathWithinApplication().value());
         result.put("method", request.getMethodValue());
-        result.put("message", exchange.getAttribute(ServerWebExchangeUtils.HYSTRIX_EXECUTION_EXCEPTION_ATTR));
+        result.put("message", exchange.getAttribute(ServerWebExchangeUtils.CIRCUITBREAKER_EXECUTION_EXCEPTION_ATTR));
         return Mono.just(result);
     }
 }

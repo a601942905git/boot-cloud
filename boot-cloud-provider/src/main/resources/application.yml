@@ -29,14 +29,20 @@ logging:
 server:
   port: 8081
 spring:
-  profiles: provider-server1
+  config:
+    activate:
+      on-profile: provider-server1
 ---
 server:
   port: 8082
 spring:
-  profiles: provider-server2
+  config:
+    activate:
+      on-profile: provider-server2
 ---
 server:
   port: 8083
 spring:
-  profiles: provider-server3
+  config:
+    activate:
+      on-profile: provider-server3

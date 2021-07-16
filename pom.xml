@@ -47,6 +47,9 @@
         <fastjson.version>1.2.51</fastjson.version>
         <spring.retry.version>1.2.4.RELEASE</spring.retry.version>
         <okhttp.version>4.2.2</okhttp.version>
+        <spring-cloud-square-retrofit.version>0.4.0-M1</spring-cloud-square-retrofit.version>
+        <spring-cloud-square-okhttp.version>0.4.0-M1</spring-cloud-square-okhttp.version>
+        <spring-cloud-circuitbreaker-dependencies.version>2.0.1</spring-cloud-circuitbreaker-dependencies.version>
     </properties>
 
     <dependencyManagement>
@@ -63,6 +66,14 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-circuitbreaker-dependencies</artifactId>
+                <version>${spring-cloud-circuitbreaker-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -85,6 +96,17 @@
                 <version>${okhttp.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-square-retrofit</artifactId>
+                <version>${spring-cloud-square-retrofit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-square-okhttp</artifactId>
+                <version>${spring-cloud-square-okhttp.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -94,4 +116,11 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 </project>
