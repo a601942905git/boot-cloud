@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author lipeng
  * @date 2019-08-12 10:37
  */
-@FeignClient(name = "boot-cloud-nacos-provider", fallback = HelloFallback.class)
+@FeignClient(name = "${service.nacos-provider.name}")
 public interface HelloClient {
 
     @GetMapping("/hello")

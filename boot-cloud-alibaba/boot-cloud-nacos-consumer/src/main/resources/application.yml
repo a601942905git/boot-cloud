@@ -7,10 +7,6 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-    sentinel:
-      transport:
-        port: 8719
-        dashboard: 127.0.0.1:8077
-feign:
-  sentinel:
-    enabled: true
+service:
+  nacos-provider:
+    name: boot-cloud-nacos-provider # https://cloud.spring.io/spring-cloud-openfeign/reference/html/

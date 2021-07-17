@@ -1,5 +1,6 @@
 package com.boot.cloud;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,6 @@ public class NacosProviderController {
 
     @GetMapping("/hello")
     public String hello(@RequestParam("name") String name) {
-        return "hello " + name + "，response from " + port;
+        return "hello " + (StringUtils.isNotBlank(name) ? name : "default") + "，response from " + port;
     }
 }
