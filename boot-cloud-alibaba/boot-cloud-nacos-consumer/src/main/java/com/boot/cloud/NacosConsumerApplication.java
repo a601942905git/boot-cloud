@@ -23,6 +23,12 @@ public class NacosConsumerApplication {
         SpringApplication.run(NacosConsumerApplication.class, args);
     }
 
+    /**
+     * 一定要加上@LoadBalanced注解
+     * @see org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration
+     *
+     * @return RestTemplate
+     */
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate(){
