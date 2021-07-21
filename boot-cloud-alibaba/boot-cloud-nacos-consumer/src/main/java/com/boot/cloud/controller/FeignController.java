@@ -10,6 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * com.boot.cloud.controller.FeignController
  *
+ * 1.Feign负载自动配置类：
+ * @see org.springframework.cloud.openfeign.loadbalancer.FeignLoadBalancerAutoConfiguration
+ *
+ * 2.负载客户端自动配置类：
+ * @see org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration
+ *
+ * 3.执行远程调用：
+ * @see org.springframework.cloud.openfeign.loadbalancer.FeignBlockingLoadBalancerClient
+ *
  * @author lipeng
  * @date 2021/7/16 5:56 PM
  */
