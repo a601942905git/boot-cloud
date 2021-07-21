@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * com.boot.cloud.controller.NacosFeignController
+ * com.boot.cloud.controller.FeignController
  *
  * @author lipeng
  * @date 2021/7/16 5:56 PM
  */
 @RestController
 @RequestMapping("/feign")
-public class NacosFeignController {
+public class FeignController {
 
     @Autowired
     private HelloClient helloClient;
