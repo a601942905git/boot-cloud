@@ -19,6 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
  * 3.执行远程调用：
  * @see org.springframework.cloud.openfeign.loadbalancer.FeignBlockingLoadBalancerClient
  *
+ * 4.OkHttpClient配置类：
+ * @see org.springframework.cloud.openfeign.loadbalancer.OkHttpFeignLoadBalancerConfiguration
+ * @see org.springframework.cloud.openfeign.clientconfig.OkHttpFeignConfiguration
+ *
+ *
  * @author lipeng
  * @date 2021/7/16 5:56 PM
  */
