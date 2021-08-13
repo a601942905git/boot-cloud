@@ -36,6 +36,7 @@
         <spring-cloud-square-retrofit.version>0.4.0-M1</spring-cloud-square-retrofit.version>
         <spring-cloud-square-okhttp.version>0.4.0-M1</spring-cloud-square-okhttp.version>
         <spring-cloud-circuitbreaker-dependencies.version>2.0.1</spring-cloud-circuitbreaker-dependencies.version>
+        <opentracing-spring-jaeger-cloud-starter.version>3.3.1</opentracing-spring-jaeger-cloud-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -92,6 +93,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-square-okhttp</artifactId>
                 <version>${spring-cloud-square-okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.opentracing.contrib</groupId>
+                <artifactId>opentracing-spring-jaeger-cloud-starter</artifactId>
+                <version>${opentracing-spring-jaeger-cloud-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

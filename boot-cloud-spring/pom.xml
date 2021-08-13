@@ -28,5 +28,6 @@
         <module>boot-cloud-http-call-spring</module>
         <module>boot-cloud-provider</module>
         <module>boot-cloud-square-retrofit</module>
+        <module>boot-cloud-opentracing</module>
     </modules>
 </project>
