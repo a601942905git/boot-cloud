@@ -1,5 +1,7 @@
 package com.boot.cloud.controller;
 
+import io.opentracing.Span;
+import io.opentracing.Tracer;
 import io.opentracing.util.GlobalTracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +28,10 @@ public class OpentracingConsumerController {
 
     @GetMapping("/")
     public String index() {
-        String consumerTraceId = GlobalTracer.get().activeSpan().context().toTraceId();
+        Tracer tracer = GlobalTracer.get();
+        Span span = tracer.activeSpan();
+        span.setBaggageItem("test", "test");
+        String consumerTraceId = span.context().toTraceId();
         String providerTraceId = restTemplate.getForObject("http://localhost:8081/", String.class);
         return String.format("consumer trace id：%s，provider trace id：%s", consumerTraceId, providerTraceId);
     }
