@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * com.boot.cloud.OpentracingConsumerApplication
  *
+ * @see io.opentracing.contrib.spring.web.client.TracingRestTemplateInterceptor 注入
+ *
+ * @see io.opentracing.contrib.web.servlet.filter.TracingFilter 提取
  * @author lipeng
  * @date 2021/8/13 9:44 AM
  */
