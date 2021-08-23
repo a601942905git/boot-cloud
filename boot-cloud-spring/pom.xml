@@ -28,6 +28,6 @@
         <module>boot-cloud-resilience4j</module>
         <module>boot-cloud-loadbalance</module>
         <module>boot-cloud-http</module>
-        <module>boot-cloud-oepnfeign</module>
+        <module>boot-cloud-openfeign</module>
     </modules>
 </project>
