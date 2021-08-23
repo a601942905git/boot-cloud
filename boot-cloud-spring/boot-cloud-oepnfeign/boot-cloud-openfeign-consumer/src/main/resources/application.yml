@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: openfeign-consumer-service
+  cloud:
+    consul:
+      host: localhost # consul ip
+      port: 8500 # consul 端口
+      discovery:
+        register: true # 是否注册服务，默认值注册服务
+        health-check-path: /actuator/health # 健康检查路径，默认值/actuator/health
+        health-check-interval: 10s # 健康检查时间间隔，默认值10s
+server:
+  port: 9090
