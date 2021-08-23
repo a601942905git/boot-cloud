@@ -31,6 +31,7 @@ Spring Cloud项目，用于学习Spring Cloud分布式技术
     - boot-cloud-gateway-feign-app：给boot-cloud-gateway网管服务进行路由的服务消费者
     - boot-cloud-proxy：整理反向代理
     - boot-cloud-opentracing：整合jaeger实现分布式了链路追踪
+    - boot-cloud-loadbalance：基于consul实现服务消费者以负载均衡方式调用服务提供者
 - boot-cloud-http：使用http方式实现远程调用、使用反向代理简化http调用方式、仿照Mybatis结合Spring进一步简化远程过程调用
 
 ## 2. Eureka相关
