@@ -1,4 +1,4 @@
-package com.boot.cloud.proxy;
+package com.boot.cloud;
 
 
 import org.junit.jupiter.api.Test;

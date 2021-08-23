@@ -1,6 +1,6 @@
-package com.boot.cloud.proxy.dynamic;
+package com.boot.cloud.dynamic;
 
-import com.boot.cloud.proxy.UserService;
+import com.boot.cloud.UserService;
 import org.junit.jupiter.api.Test;
 
 /**

@@ -2,22 +2,23 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
-        <artifactId>boot-cloud</artifactId>
+        <artifactId>boot-cloud-spring</artifactId>
         <groupId>com.boot.cloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>boot-cloud-start-proxy</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
-    <name>boot-cloud-start-proxy</name>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>boot-cloud-http</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>boot-cloud-http</name>
     <url>http://www.example.com</url>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>boot-cloud-proxy</module>
+        <module>boot-cloud-http-call</module>
+        <module>boot-cloud-http-call-spring</module>
+    </modules>
 </project>

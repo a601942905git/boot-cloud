@@ -1,4 +1,4 @@
-package com.boot.cloud.proxy.dynamic;
+package com.boot.cloud.dynamic;
 
 import org.springframework.cglib.proxy.Enhancer;
 

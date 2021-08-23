@@ -1,21 +1,19 @@
-package com.boot.cloud.proxy.dynamic;
+package com.boot.cloud.dynamic;
 
-import org.springframework.cglib.proxy.MethodInterceptor;
-import org.springframework.cglib.proxy.MethodProxy;
-
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * com.boot.cloud.proxy.dynamic.CglibDynamicProxy
+ * com.boot.cloud.proxy.dynamic.JdkDynamicProxy
  *
  * @author lipeng
- * @date 2020/4/2 6:26 PM
+ * @date 2020/4/7 10:53 AM
  */
-public class CglibDynamicProxy implements MethodInterceptor {
+public class JdkDynamicProxy implements InvocationHandler {
 
     private Object target;
 
-    public CglibDynamicProxy(Object target) {
+    public JdkDynamicProxy(Object target) {
         this.target = target;
     }
 
@@ -28,7 +26,7 @@ public class CglibDynamicProxy implements MethodInterceptor {
     }
 
     @Override
-    public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("你好，我是小王！");
         Object result = method.invoke(target, args);
         System.out.println("好的，下次家里聊！");
