@@ -20,8 +20,6 @@
         <module>boot-cloud-app</module>
         <module>boot-cloud-eureka-server</module>
         <module>boot-cloud-eureka-cluster-server</module>
-        <module>boot-cloud-feign-app</module>
-        <module>boot-cloud-feign-custom-app</module>
         <module>boot-cloud-gateway</module>
         <module>boot-cloud-gateway-feign-app</module>
         <module>boot-cloud-provider</module>
