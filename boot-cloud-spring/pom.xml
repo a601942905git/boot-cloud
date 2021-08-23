@@ -30,5 +30,6 @@
         <module>boot-cloud-square-retrofit</module>
         <module>boot-cloud-opentracing</module>
         <module>boot-cloud-resilience4j</module>
+        <module>boot-cloud-loadbalance</module>
     </modules>
 </project>
