@@ -11,6 +11,9 @@ spring:
         register: true # 是否注册服务，默认值注册服务
         health-check-path: /actuator/health # 健康检查路径，默认值/actuator/health
         health-check-interval: 10s # 健康检查时间间隔，默认值10s
+        instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
+        # 指定实例id，默认情况下会使用${spring.application.name}-${server.port}格式，假如集群应用名称一致、端口一致、ip不一致，
+        # 反注册服务的时候使用${spring.application.name}-${server.port}格式，会对所有服务进行反注册
 ---
 server:
   port: 8081
