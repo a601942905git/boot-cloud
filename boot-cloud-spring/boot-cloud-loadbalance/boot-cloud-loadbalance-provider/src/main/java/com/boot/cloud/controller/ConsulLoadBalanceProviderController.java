@@ -17,7 +17,7 @@ public class ConsulLoadBalanceProviderController {
     @Value("${server.port}")
     private Integer port;
 
-    @GetMapping("/{name}")
+    @GetMapping("/index/{name}")
     public String index(@PathVariable(name = "name") String name) {
         return "hello " + name + " from " + port;
     }

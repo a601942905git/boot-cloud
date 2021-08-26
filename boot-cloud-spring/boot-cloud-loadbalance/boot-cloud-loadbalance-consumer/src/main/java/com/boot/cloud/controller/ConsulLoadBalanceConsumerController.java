@@ -26,8 +26,8 @@ public class ConsulLoadBalanceConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/{name}")
+    @GetMapping("/index/{name}")
     public String index(@PathVariable(name = "name") String name) {
-        return restTemplate.getForObject("http://consul-loadbalance-provider-service/" + name, String.class);
+        return restTemplate.getForObject("http://consul-loadbalance-provider-service/index/" + name, String.class);
     }
 }

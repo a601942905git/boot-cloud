@@ -14,6 +14,13 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * LoadBalancerInterceptorConfig声明LoadBalancerInterceptor和RestTemplateCustomizer
  * 遍历RestTemplateCustomizer对RestTemplate进行个性化配置也就是设置拦截器为LoadBalancerInterceptor
  *
+ * @see org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration
+ * @see org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.BlockingSupportConfiguration
+ *      @see org.springframework.cloud.loadbalancer.core.DiscoveryClientServiceInstanceListSupplier
+ *      @see org.springframework.cloud.consul.discovery.ConsulDiscoveryClient
+ *      @see com.ecwid.consul.v1.health.HealthConsulClient 调用接口http://localhost:8500/v1/health/service/service-name
+ *
+ *
  * @author lipeng
  * @date 2021/8/18 7:41 PM
  */

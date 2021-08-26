@@ -19,7 +19,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * 服务反注册流程
  * @see org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistration 父类定义了销毁方法destroy()
  *      @see org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry 服务注册
- *      @see com.ecwid.consul.v1.agent.AgentConsulClient 调用/v1/agent/service/deregister/接口注册服务
+ *      @see com.ecwid.consul.v1.agent.AgentConsulClient 调用/v1/agent/service/deregister/service-id接口注册服务
  * @author lipeng
  * @date 2021/8/18 7:35 PM
  */
