@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(value = "openfeign-provider-service")
 public interface IndexClient {
 
-    @GetMapping("/{name}")
+    @GetMapping("/index/{name}")
     String index(@PathVariable(name = "name") String name);
 }

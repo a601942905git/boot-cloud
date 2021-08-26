@@ -18,7 +18,7 @@ public class OpenfeignConsumerController {
     @Autowired
     private IndexClient indexClient;
 
-    @GetMapping("/{name}")
+    @GetMapping("/index/{name}")
     public String index(@PathVariable(name = "name") String name) {
         return indexClient.index(name);
     }

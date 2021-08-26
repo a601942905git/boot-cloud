@@ -17,7 +17,7 @@ public class OpenfeignProviderController {
     @Value("${server.port}")
     private Integer port;
 
-    @GetMapping("/{name}")
+    @GetMapping("/index/{name}")
     public String index(@PathVariable(name = "name") String name) {
         return "openfeign service：hello " + name + " from " + port;
     }
