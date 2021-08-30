@@ -23,4 +23,14 @@ spring:
 # feign相关配置
 feign:
   okhttp:
-    enabled: false # 使用OkHttp作为HttpClient
+    enabled: true # 使用OkHttp作为HttpClient
+  client:
+    config: # 参考FeignClientProperties中的config
+      openfeign-provider-service: # 调用服务名称
+        connectTimeout: 3000 # 连接超时时间
+        readTimeout: 3000 # 读取超时时间
+#        retryer: feign.Retryer.Default
+        requestInterceptors: # 定义拦截器
+          - 'com.boot.cloud.openfeign.client.interceptor.PrintLogInterceptor'
+
+
