@@ -1,8 +1,10 @@
+server:
+  port: 9090
 spring:
   application:
     name: openfeign-consumer-service
   cloud:
-    consul:
+    consul: # consul注册中心相关配置
       host: localhost # consul ip
       port: 8500 # consul 端口
       discovery:
@@ -17,5 +19,8 @@ spring:
         enabled: false
         # 是否开始缓存，如果开启缓存，服务提供者实例重启，会偶现服务调用失败场景，默认缓存时间35s
         # 参考LoadBalancerCacheAutoConfiguration和LoadBalancerCacheProperties
-server:
-  port: 9090
+
+# feign相关配置
+feign:
+  okhttp:
+    enabled: false # 使用OkHttp作为HttpClient
