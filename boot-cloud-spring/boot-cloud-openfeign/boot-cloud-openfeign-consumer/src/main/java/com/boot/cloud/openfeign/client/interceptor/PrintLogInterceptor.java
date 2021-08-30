@@ -13,6 +13,9 @@ import java.nio.charset.StandardCharsets;
  * 拦截器配置：FeignClientFactoryBean的configureUsingProperties()
  * 执行拦截器：SynchronousMethodHandler的executeAndDecode()
  *
+ * @see org.springframework.cloud.openfeign.encoding.FeignAcceptGzipEncodingInterceptor
+ * @see org.springframework.cloud.openfeign.encoding.FeignContentGzipEncodingInterceptor
+ *
  * @author lipeng
  * @date 2021/8/30 7:02 PM
  */
