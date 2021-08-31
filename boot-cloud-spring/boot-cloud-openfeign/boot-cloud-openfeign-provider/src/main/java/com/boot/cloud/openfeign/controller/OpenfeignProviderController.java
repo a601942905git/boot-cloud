@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -47,5 +48,11 @@ public class OpenfeignProviderController {
         StudentListResponse response = new StudentListResponse();
         response.setStudentList(studentFilterList);
         return response;
+    }
+
+    @GetMapping("/timeout")
+    public void timeout() throws InterruptedException {
+        // 用于模拟耗时任务
+        TimeUnit.SECONDS.sleep(5);
     }
 }

@@ -5,6 +5,7 @@ import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 /**
  * com.boot.cloud.openfeign.client.interceptor.PrintLogInterceptor
@@ -25,7 +26,10 @@ public class PrintLogInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate template) {
         String requestUrl = template.url();
-        String requestBody = new String(template.body(), StandardCharsets.UTF_8);
-        log.info("request url：{}，request body：{}", requestUrl, requestBody);
+
+        String requestBody = Objects.nonNull(template.body()) ?
+                new String(template.body(), StandardCharsets.UTF_8) : "";
+        log.info("request url：{}，request body：{}，request time：{}",
+                requestUrl, requestBody, System.currentTimeMillis());
     }
 }

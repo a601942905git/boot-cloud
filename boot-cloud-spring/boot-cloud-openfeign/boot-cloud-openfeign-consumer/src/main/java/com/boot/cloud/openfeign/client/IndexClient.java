@@ -22,4 +22,7 @@ public interface IndexClient {
 
     @PostMapping("/student/list")
     StudentListResponse list(@RequestBody StudentListRequest request);
+
+    @GetMapping("/timeout")
+    void timeout();
 }

@@ -27,10 +27,13 @@ feign:
   client:
     config: # 参考FeignClientProperties中的config
       openfeign-provider-service: # 调用服务名称
+        loggerLevel: full # 日志级别，参考：feign.Logger.Level
         connectTimeout: 3000 # 连接超时时间
         readTimeout: 3000 # 读取超时时间
-#        retryer: feign.Retryer.Default
+        retryer: com.boot.cloud.openfeign.client.retry.RpcRetryer # 指定重试策略，也可以使用feign.Retryer.Default默认重试策略
         requestInterceptors: # 定义拦截器
-          - 'com.boot.cloud.openfeign.client.interceptor.PrintLogInterceptor'
-
+          - com.boot.cloud.openfeign.client.interceptor.PrintLogInterceptor
+#logging:
+#  level:
+#    com.boot.cloud: debug
 

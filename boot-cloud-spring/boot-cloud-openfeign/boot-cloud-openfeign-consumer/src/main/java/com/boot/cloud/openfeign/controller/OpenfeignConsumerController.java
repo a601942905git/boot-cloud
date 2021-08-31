@@ -27,6 +27,11 @@ public class OpenfeignConsumerController {
         return indexClient.index(name);
     }
 
+    @GetMapping("/timeout")
+    public void timeout() {
+        indexClient.timeout();
+    }
+
     @PostMapping("/student/list")
     public StudentListResponse list(@RequestBody StudentListRequest studentRequest) {
         return indexClient.list(studentRequest);
