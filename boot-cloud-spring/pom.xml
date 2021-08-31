@@ -17,15 +17,10 @@
 
     <modules>
         <module>boot-cloud-api</module>
-        <module>boot-cloud-app</module>
-        <module>boot-cloud-eureka-server</module>
-        <module>boot-cloud-eureka-cluster-server</module>
         <module>boot-cloud-gateway</module>
         <module>boot-cloud-gateway-feign-app</module>
-        <module>boot-cloud-provider</module>
         <module>boot-cloud-square-retrofit</module>
         <module>boot-cloud-opentracing</module>
-        <module>boot-cloud-resilience4j</module>
         <module>boot-cloud-loadbalance</module>
         <module>boot-cloud-http</module>
         <module>boot-cloud-openfeign</module>
