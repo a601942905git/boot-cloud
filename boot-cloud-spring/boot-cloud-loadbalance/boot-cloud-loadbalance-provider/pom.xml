@@ -29,6 +29,7 @@
             <artifactId>caffeine</artifactId>
         </dependency>
 
+        <!-- consul会进行监控检查，因此需要添加该依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
