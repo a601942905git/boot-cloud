@@ -16,5 +16,6 @@
     <modules>
         <module>boot-cloud-resilience4J-provider</module>
         <module>boot-cloud-resilience4J-consumer</module>
+        <module>boot-cloud-resilience4J-example</module>
     </modules>
 </project>

@@ -21,7 +21,17 @@ spring:
         # 参考LoadBalancerCacheAutoConfiguration和LoadBalancerCacheProperties
 feign:
   circuitbreaker:
-    enabled: true
+    enabled: true # 开启熔断器
+resilience4j:
+  circuitbreaker:
+    configs: # 指定配置
+      share:
+        minimumNumberOfCalls: 3 # 最小请求数为3
+    instances:
+      '[TestClient#test()]':
+        baseConfig: share # 声明使用的默认配置，instance中指定的配置会覆盖默认配置
+        slidingWindowSize: 20
+
 management:
   endpoints:
     web:
