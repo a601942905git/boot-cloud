@@ -14,4 +14,7 @@ public interface TestClient {
 
     @GetMapping("/test")
     String test();
+
+    @GetMapping("/timeout")
+    String timeout();
 }

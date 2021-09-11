@@ -21,4 +21,9 @@ public class Resilience4JConsumerController {
     public String test() {
         return testClient.test();
     }
+
+    @GetMapping("/timeout")
+    public String timeout() {
+        return testClient.timeout();
+    }
 }
