@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * com.boot.cloud.controller.Resilience4JProvideController
  *
@@ -17,7 +19,8 @@ public class Resilience4JProvideController {
     private Integer port;
 
     @GetMapping("/test")
-    public String test() {
-        throw new NullPointerException();
+    public String test() throws InterruptedException {
+        TimeUnit.MILLISECONDS.sleep(100);
+        return "resilience4J service from " + port;
     }
 }

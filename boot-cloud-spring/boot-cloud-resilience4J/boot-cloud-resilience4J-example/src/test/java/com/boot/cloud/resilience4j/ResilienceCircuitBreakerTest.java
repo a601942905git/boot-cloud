@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  *  3.核心配置：
  *      3.1 failureRateThreshold：失败率阀值，默认值50
- *      3.2 slowCallRateThreshold：慢调用阀值，默认值
+ *      3.2 slowCallRateThreshold：慢调用阀值，默认值100
  *      3.3 slowCallDurationThreshold：慢调用持续时间阀值，默认值60000ms
  *      3.4 permittedNumberOfCallsInHalfOpenState：熔断器半开状态下允许通过的请求数，默认值10
  *      3.5 maxWaitDurationInHalfOpenState：熔断器在切换到打开状态之前可以保持在半打开状态的最长时间，默认值0表示在半开状态无限等待，直到所有允许请求完成

@@ -19,9 +19,6 @@ public class Resilience4JConsumerController {
 
     @GetMapping("/test")
     public String test() {
-        for (int i = 0; i < 10; i++) {
-            testClient.test();
-        }
-        return "execute test method success";
+        return testClient.test();
     }
 }
