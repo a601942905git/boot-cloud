@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -28,7 +29,7 @@ public class Resilience4JProvideController {
 
     @GetMapping("/timeout")
     public String timeout() throws InterruptedException {
-        log.info("execute timeout method");
+        log.info("execute timeout method，call time：{}", LocalDateTime.now());
         TimeUnit.SECONDS.sleep(10);
         return "resilience4J service from " + port;
     }
