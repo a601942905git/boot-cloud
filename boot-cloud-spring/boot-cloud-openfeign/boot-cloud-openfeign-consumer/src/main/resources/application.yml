@@ -16,9 +16,11 @@ spring:
         # 反注册服务的时候使用${spring.application.name}-${server.port}格式，会对所有服务进行反注册
     loadbalancer:
       cache:
-        enabled: false
+        enabled: true
         # 是否开始缓存，如果开启缓存，服务提供者实例重启，会偶现服务调用失败场景，默认缓存时间35s
         # 参考LoadBalancerCacheAutoConfiguration和LoadBalancerCacheProperties
+        # 经过试验，缓存可以开启，开启前提条件(二者存在其一即可)：1.FeignClient声明了重试器 2. 创建了consul健康服务观察器
+        ttl: 1800s # 配置缓存时间
 
 # feign相关配置
 feign:

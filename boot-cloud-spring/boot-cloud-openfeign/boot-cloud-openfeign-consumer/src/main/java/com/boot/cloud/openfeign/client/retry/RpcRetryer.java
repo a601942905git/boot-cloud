@@ -7,6 +7,8 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * com.boot.cloud.openfeign.client.retry.RpcRetry
+ * 该重试器在application.yml中指定，实现逻辑可参考：
+ * @see org.springframework.cloud.openfeign.FeignClientFactoryBean#configureFeign(org.springframework.cloud.openfeign.FeignContext, feign.Feign.Builder)
  *
  * @author lipeng
  * @date 2021/8/31 1:58 PM
