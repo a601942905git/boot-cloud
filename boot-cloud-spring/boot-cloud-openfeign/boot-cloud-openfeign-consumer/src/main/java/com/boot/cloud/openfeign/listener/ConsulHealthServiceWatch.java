@@ -48,7 +48,7 @@ public class ConsulHealthServiceWatch implements SmartLifecycle, ApplicationCont
      * 等待时间单位s
      * @see com.ecwid.consul.v1.QueryParams#toUrlParameters()
      */
-    public static final long WAIT_TIME = 6L;
+    public static final long WAIT_TIME = 60L;
 
     private ApplicationContext applicationContext;
 
