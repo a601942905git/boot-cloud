@@ -20,6 +20,7 @@ public class OpentracingProviderController {
     @GetMapping("/")
     public String index() {
         Tracer tracer = GlobalTracer.get();
+        // 返回当前激活的span
         Span span = tracer.activeSpan();
         log.info("test：{}", span.getBaggageItem("test"));
         return "current request trace id：" + span.context().toTraceId();

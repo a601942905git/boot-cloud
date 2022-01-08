@@ -29,6 +29,7 @@ public class OpentracingConsumerController {
     @GetMapping("/")
     public String index() {
         Tracer tracer = GlobalTracer.get();
+        // 获取当前激活span
         Span span = tracer.activeSpan();
         span.setBaggageItem("test", "test");
         String consumerTraceId = span.context().toTraceId();
