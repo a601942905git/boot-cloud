@@ -38,6 +38,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @see HttpServletRequestExtractAdapter#servletHeadersToMultiMap(javax.servlet.http.HttpServletRequest) 读取所有header信息
  * @see TextMapCodec#extract(io.opentracing.propagation.TextMap) 读取header中uber-trace-id的值生成SpanContext
  *
+ * 如果想在分布式系统之间传递自定义标识可以使用span.setBaggageItem("test", "test");，该方法设置的key和value也会被放入header中进行传递
+ *
  * @author lipeng
  * @date 2021/8/13 9:44 AM
  */
