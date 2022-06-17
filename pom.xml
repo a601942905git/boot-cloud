@@ -29,7 +29,7 @@
         <spring.cloud.version>2020.0.2</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.6.RELEASE</spring.cloud.alibaba.version>
         <lombok.version>1.18.2</lombok.version>
-        <fastjson.version>1.2.51</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <spring.retry.version>1.2.4.RELEASE</spring.retry.version>
         <okhttp.version>4.2.2</okhttp.version>
         <spring-cloud-square-retrofit.version>0.4.0-M1</spring-cloud-square-retrofit.version>
