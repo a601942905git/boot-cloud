@@ -31,7 +31,7 @@
         <lombok.version>1.18.2</lombok.version>
         <fastjson.version>1.2.51</fastjson.version>
         <spring.retry.version>1.2.4.RELEASE</spring.retry.version>
-        <okhttp.version>4.2.2</okhttp.version>
+        <okhttp.version>4.9.2</okhttp.version>
         <spring-cloud-square-retrofit.version>0.4.0-M1</spring-cloud-square-retrofit.version>
         <spring-cloud-square-okhttp.version>0.4.0-M1</spring-cloud-square-okhttp.version>
         <spring-cloud-circuitbreaker-dependencies.version>2.0.1</spring-cloud-circuitbreaker-dependencies.version>
